@@ -86,7 +86,8 @@
 
 						<li class="dropdown user user-menu">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-								<img src="<?= base_url('assets/') ?>dist/img/logout.PNG">
+							<i class="fa fa-fw fa-sign-out"></i> 
+								<!-- <img src="<?= base_url('assets/') ?>dist/img/logout.PNG"> -->
 								<span class="hidden-xs">LOGOUT</span>
 							</a>
 						</li>

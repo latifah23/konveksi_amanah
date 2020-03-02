@@ -2,7 +2,7 @@
 
 class Model_customer extends CI_Model
 {
-	public $_table = "customer";
+	public $_table = "costumer";
 
 	public function getAll()
 	{
@@ -27,7 +27,7 @@ class Model_customer extends CI_Model
 			
 		);
 
-		$this->db->insert('customer', $data);
+		$this->db->insert('costomer', $data);
 	}
 
 
@@ -35,14 +35,14 @@ class Model_customer extends CI_Model
 	{
 		//produces:
 		//WHERE id_nomor008 = $id
-		$this->db->where('id_customer', $id_customer);
+		$this->db->where('id_costumer', $id_customer);
 		//DELETE FORM mytable
-		$this->db->delete("customer");
+		$this->db->delete("costumer");
 	}
 
 	public function getByid($id_customer)
 	{
-		return $this->db->get_where('customer', ['id' => $id_customer])->row_array();
+		return $this->db->get_where('costumer', ['id' => $id_customer])->row_array();
 	}
 
 
@@ -62,7 +62,7 @@ class Model_customer extends CI_Model
 			'kodepos'		=> $post["kodepos"],
 			'alamat'       => $post["alamat"],
 		);
-		$this->db->where('id_customer', $this->input->post('id_customer'));
-		$this->db->update('customer', $data);
+		$this->db->where('id_customer', $this->input->post('id_costumer'));
+		$this->db->update('costumer', $data);
 	}
 }
