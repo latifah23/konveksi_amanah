@@ -2,7 +2,7 @@
 
 class Model_customer extends CI_Model
 {
-	public $_table = "costumer";
+	public $_table = "customer";
 
 	public function getAll()
 	{

@@ -2,46 +2,26 @@
 
 class Model_pemesanan extends CI_Model
 {
-	public $_table = "pemesanan";
+	public $_table = "pesan";
 
 	public function getAll()
 	{
-		$pemesananQuery = "SELECT `pemesanan` .*, 
-		`customer`.`nama` as nama_customer, 
-		`pegawai`.`nama` as nama_pegawai,
-		`produk`.`nama` as nama_produk
-		FROM `pemesanan` 
-		JOIN `customer` ON `pemesanan`.`id_customer` = `customer`. `id_customer`
-		JOIN `pegawai`  ON `pemesanan`.`id_pegawai` = `pegawai`. `id_pegawai`
-		JOIN	`produk` ON `pemesanan`.`id_produk` = `produk`. `id_produk`
-		ORDER BY `pemesanan`.`id` DESC";
-		return $this->db->query($pemesananQuery)->result_array();
+		return $this->db->get($this->_table)->result_array();
 	}
 
 	public function riwayat()
 	{
-		$riwayatQuery = "SELECT `pemesanan` .*, 
-		`customer`.`nama` as nama_customer, 
-		`pegawai`.`nama` as nama_pegawai,
-		`produk`.`nama` as nama_produk
-		FROM `pemesanan` 
-		JOIN `customer` ON `pemesanan`.`id_customer` = `customer`. `id_customer`
-		JOIN `pegawai`  ON `pemesanan`.`id_pegawai` = `pegawai`. `id_pegawai`
-		JOIN	`produk` ON `pemesanan`.`id_produk` = `produk`. `id_produk`
-		WHERE `pemesanan`.`status` = '1'
-		ORDER BY `pemesanan`.`id` DESC
-		";
-		return $this->db->query($riwayatQuery)->result_array();
+		
 	}
 	public function cekkodeorder()
 	{
 		//keterangan 
 		//tbl_users di ganti sesuai dengan nama tabel customer di database
 
-		$this->db->select('RIGHT(pemesanan.kode_order,2) as kode_order', FALSE);
+		$this->db->select('RIGHT(pesan.kode_order,2) as kode_order', FALSE);
 		$this->db->order_by('kode_order', 'DESC');
 		$this->db->limit(1);
-		$query = $this->db->get('pemesanan');  //cek dulu apakah ada sudah ada kode di tabel.    
+		$query = $this->db->get('pesan');  //cek dulu apakah ada sudah ada kode di tabel.    
 		if ($query->num_rows() <> 0) {
 			//cek kode jika telah tersedia    
 			$data = $query->row();
@@ -55,25 +35,22 @@ class Model_pemesanan extends CI_Model
 		return $kodetampil;
 	}
 
-	public function tambahDataPemesanan()
+	public function tambahDatapesan()
 	{
 		$post = $this->input->post();
 		$data = array(
-			"id_pegawai" 			=> $post["id_pegawai"],
+			"id_pesan" 			=> $post["id_pesan"],
 			"id_customer" 			=> $post["id_customer"],
-			"durasi_pemesanan" 		=> $post["durasi_pemesanan"],
 			"kode_order" 			=> $post["kode_order"],
-			"status" 				=> $post["status"],
+			"tanggal_pesan" 		=> $post["tanggal_pesan"],
+			"tanggal_ambil" 		=> $post["tanggal_ambil"],
 			"id_produk" 			=> $post["id_produk"],
-			"jenis_kain" 			=> $post["jenis_kain"],
-			"warna" 				=> $post["warna"],
-			"jenis_sablon"			=> $post["jenis_sablon"],
-			"keterangan" 			=> $post["keterangan"]
+			
 		);
-		$this->db->insert('pemesanan', $data);
-		$pemesanan_id = $this->db->insert_id();
+		$this->db->insert('pesan', $data);
+		$pesan_id = $this->db->insert_id();
 		$ukuran = array(
-			'pemesanan_id' => $pemesanan_id,
+			'pesan_id' => $pesan_id,
 			"xs_pendek" => $post["xs_pendek"],
 			"xs_panjang" => $post["xs_panjang"],
 			"s_pendek" => $post["s_pendek"],
@@ -97,41 +74,41 @@ class Model_pemesanan extends CI_Model
 	}
 
 
-	public function hapus_pemesanan($id)
+	public function hapus_pesan($id)
 	{
 		//produces:
 		//WHERE id_nomor008 = $id
 		$this->db->where('id', $id);
 		//DELETE FORM mytable
-		$this->db->delete("pemesanan");
+		$this->db->delete("pesan");
 	}
 
 	public function getByid($id)
 	{
-		return $this->db->get_where('pemesanan', ['id' => $id])->row_array();
+		return $this->db->get_where('pesan', ['id' => $id])->row_array();
 	}
 	public function getBykode($kode)
 	{
-		return $this->db->get_where('pemesanan', ['kode_order' => $kode])->row_array();
+		return $this->db->get_where('pesan', ['kode_order' => $kode])->row_array();
 	}
 
-	public function update_pemesanan()
+	public function update_pesan()
 	{
 		$post = $this->input->post();
 		$data = array(
 			"id_pegawai" 			=> $post["id_pegawai"],
 			"id_customer" 			=> $post["id_customer"],
-			"durasi_pemesanan" 		=> $post["durasi_pemesanan"],
+			"durasi_pesan" 		=> $post["durasi_pesan"],
 			"kode_order" 			=> $post["kode_order"],
 			// "status" 				=> $post["status"],
 			// "produk_id" 			=> $post["produk_id"],
 			"jenis_kain" 			=> $post["jenis_kain"],
 			"warna" 				=> $post["warna"],
-			"jumlah_pemesanan" 		=> $post["jumlah_pemesanan"],
+			"jumlah_pesan" 		=> $post["jumlah_pesan"],
 			// "jenis_sablon"			=> $post["jenis_sablon"],
 			"keterangan" 			=> $post["keterangan"]
 		);
 		$this->db->where('id', $this->input->post('id'));
-		$this->db->update('pemesanan', $data);
+		$this->db->update('pesan', $data);
 	}
 }
