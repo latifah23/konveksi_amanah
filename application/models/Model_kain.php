@@ -31,7 +31,7 @@ class Model_kain extends CI_Model
 
 	public function getByid($id_kain)
 	{
-		return $this->db->get_where('kain', ['id' => $id_kain])->row_array();
+		return $this->db->get_where('kain', ['id_kain' => $id_kain])->row_array();
 	}
 
 

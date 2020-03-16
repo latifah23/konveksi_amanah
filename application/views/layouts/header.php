@@ -63,13 +63,14 @@
 						<li class=""><a href="<?= base_url('home') ?>">Home</a></li>
 						<li class=""><a href="<?= base_url('pesanan/tambah_pesanan') ?>">Pesan Baru</a></li>
 						<li class=""><a href="<?= base_url('pesanan') ?>">Data Pesan <span class="sr-only">(current)</span></a></li>
-						<li class="dropdown">
+						<li class=""><a href="<?= base_url('customer/index') ?>">Customer <span class="sr-only">(current)</span></a></li>
+						<!-- <li class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown">Customer <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a class="dropdown-item" data-toggle="modal" data-target="#modalcustomer">Tambah Customer</a></li>
 								<li><a href="<?= base_url('customer') ?>">Data customer</a></li>
 							</ul>
-						</li>
+						</li> -->
 						<li class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown">Master <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
@@ -97,6 +98,6 @@
 		</nav>
 	</header>
 	<!-- Modal tambah customer-->
-	<?php
+	<!-- <?php
 	include APPPATH . 'views/customer/_form_add_customer.php';
-	?>
+	?> -->

@@ -22,9 +22,7 @@
 						</button>
 					</div>
 				<?php endif; ?>
-				<div class="box-header">
-					<h3 class="box-title">Data Table With Full Features</h3>
-				</div>
+				
 				<!-- /.box-header -->
 				<div class="box-body">
 					<table id="example1" class="table table-bordered table-striped">
@@ -56,6 +54,7 @@
 		</section>
 	</div>
 </div>
+<!-- tambah produk -->
 <div class="modal fade" id="modalProduk" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
 		<div class="modal-content">

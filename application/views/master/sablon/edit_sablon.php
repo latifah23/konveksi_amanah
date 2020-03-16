@@ -3,7 +3,7 @@
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 			<h1>
-				Edit Data Kain
+				Edit Data Sablon
 			</h1>
 		</section>
 		<!-- Main content -->
@@ -14,16 +14,16 @@
 						<?= validation_errors(); ?>
 					</div>
 				<?php endif ?>
-				<form action="<?= base_url('kain/update_kain/' )?>" method="post">
+				<form action="<?= base_url('sablon/update_sablon/' )?>" method="post">
 					<div class="modal-body"> 
-						<input type="hidden" name="id_kain" value="<?= $kain['id_kain'] ?>">
+						<input type="hidden" name="id_sablon" value="<?= $sablon['id_sablon'] ?>">
 						<div class="form-group">
 							<label for="nama">Nama</label>
-							<input type="text" class="form-control" id="nama_kain" name="nama_kain" value="<?= $kain['nama_kain'] ?>">
+							<input type="text" class="form-control" id="nama_sablon" name="nama_sablon" value="<?= $sablon['nama_sablon'] ?>">
 						</div>
 					</div>
 					<div class="modal-footer">
-						<a class="btn btn-info " href="<?= base_url('kain') ?>">Kembali</a>
+						<a class="btn btn-info " href="<?= base_url('sablon') ?>">Kembali</a>
 						<button type="submit" class="btn btn-primary">Save changes</button>
 					</div>
 				</form>

@@ -20,6 +20,7 @@ class customer extends CI_Controller
 	{
 
 		$this->form_validation->set_rules('nama', 'Nama', 'required');
+		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
 		$this->form_validation->set_rules('jekel', 'Jekel', 'required');
 		$this->form_validation->set_rules('email', 'Email', 'required');
@@ -43,6 +44,7 @@ class customer extends CI_Controller
 	{
 		$data['customer'] = $this->model_customer->getByid($id);
 		$this->form_validation->set_rules('nama', 'Nama', 'required');
+		$this->form_validation->set_rules('username', 'Username', 'required');
 		$this->form_validation->set_rules('password', 'Password', 'required');
 		$this->form_validation->set_rules('jekel', 'Jekel', 'required');
 		$this->form_validation->set_rules('email', 'Email', 'required');
@@ -70,5 +72,14 @@ class customer extends CI_Controller
 		$this->model_customer->hapus_customer($id_customer);
 		$this->session->set_flashdata('flash', 'DiHapus');
 		redirect('customer');
+	}
+	public function tampil_customer($id_customer)
+	{
+		$data['customer'] = $this->model_customer->getByid($id_customer);
+		if ($this->form_validation->run() ==  FALSE) {
+			$this->load->view("layouts/header");
+			$this->load->view('customer/tampil_customer', $data);
+			$this->load->view("layouts/footer");
+		}
 	}
 }
