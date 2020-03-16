@@ -1,10 +1,3 @@
-<footer class="main-footer">
-	<div class="pull-right hidden-xs">
-		<b>AMANAH COLLECTION</>
-	</div>
-</footer>
-
-
 <!-- ./wrapper -->
 
 <!-- Bootstrap 3.3.7 -->

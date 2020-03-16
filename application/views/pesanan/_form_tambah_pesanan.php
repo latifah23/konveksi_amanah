@@ -4,7 +4,6 @@
 		<section class="content-header">
 			<h1>
 				Tambah Pesanan
-				<a href="<?= base_url('/pesanan') ?>" type="button" class="btn btn-block btn-primary" style="width:auto; float:right;">BACK</a>
 
 			</h1>
 

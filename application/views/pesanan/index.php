@@ -8,6 +8,33 @@
 
 			</h1>
 		</section>
+		<div class="col-md-2">
+			<label>Filter</label>
+			<select id="mode" name="mode" class="form-control select2-load select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+				<option value="tanggal">Tanggal</option>
+				<option value="bulanan" selected="">Bulanan</option>
+				<option value="tahunan">Tahunan</option>
+			</select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-mode-container"><span class="select2-selection__rendered" id="select2-mode-container" title="Bulanan">Bulanan</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+			</div>
+
+			<div class="col-md-2">
+			<label>Filter</label>
+			<select id="mode" name="mode" class="form-control select2-load select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+				<option value="tanggal">Tanggal</option>
+				<option value="bulanan" selected="">Bulanan</option>
+				<option value="tahunan">Tahunan</option>
+			</select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-mode-container"><span class="select2-selection__rendered" id="select2-mode-container" title="Bulanan">Bulanan</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+			</div>
+
+			<div class="col-md-2">
+			<label>Filter</label>
+			<select id="mode" name="mode" class="form-control select2-load select2-hidden-accessible" tabindex="-1" aria-hidden="true">
+				<option value="tanggal">Tanggal</option>
+				<option value="bulanan" selected="">Bulanan</option>
+				<option value="tahunan">Tahunan</option>
+			</select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 100%;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-mode-container"><span class="select2-selection__rendered" id="select2-mode-container" title="Bulanan">Bulanan</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
+			</div>
+
 
 		<!-- Main content -->
 		<section class="content">
@@ -23,8 +50,16 @@
 								<th>Produk</th>
 								<th>Pegawai</th>
 								<th>Durasi Pemesanan</th>
-								<th>Status</th>
 								<th>Tindakan</th>
+							</tr>
+							<tr>
+								<td>1<td>
+								<td>1<td>
+								<td>1a<td>
+								<td>1<td>
+								<td>1<td>
+								<td>1<td>
+								<td>1<td>
 							</tr>
 						</thead>
 						<tbody>

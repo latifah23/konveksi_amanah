@@ -8,4 +8,6 @@ class Model_master extends CI_Model
 	{
 		return $this->db->get($this->_table)->result_array();
 	}
+
+	
 }

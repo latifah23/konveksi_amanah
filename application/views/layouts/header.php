@@ -60,25 +60,25 @@
 
 				<div class="collapse navbar-collapse pull-left" id="navbar-collapse">
 					<ul class="nav navbar-nav">
-						<li class="<?= $this->uri->segment(1) == 'home' ? 'active' : ''  ?>"><a href="<?= base_url('home') ?>">Home</a></li>
-						<li class="<?= $this->uri->segment(1) == 'pesanan/tambah_pesanan' ? 'active' : ''  ?>"><a href="<?= base_url('pesanan/tambah_pesanan') ?>">Pesan Baru</a></li>
-						<li class="<?= $this->uri->segment(1) == 'pesanan' ? 'active' : ''  ?>"><a href="<?= base_url('pesanan') ?>">Data Pesan <span class="sr-only">(current)</span></a></li>
-						<li class="dropdown <?= $this->uri->segment(1) == 'customer' ? 'active' : ''  ?>">
+						<li class=""><a href="<?= base_url('home') ?>">Home</a></li>
+						<li class=""><a href="<?= base_url('pesanan/tambah_pesanan') ?>">Pesan Baru</a></li>
+						<li class=""><a href="<?= base_url('pesanan') ?>">Data Pesan <span class="sr-only">(current)</span></a></li>
+						<li class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown">Customer <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
 								<li><a class="dropdown-item" data-toggle="modal" data-target="#modalcustomer">Tambah Customer</a></li>
 								<li><a href="<?= base_url('customer') ?>">Data customer</a></li>
 							</ul>
 						</li>
-						<li class="dropdown <?= $this->uri->segment(1) == 'master' ? 'active' : ''  ?>">
+						<li class="dropdown">
 							<a class="dropdown-toggle" data-toggle="dropdown">Master <span class="caret"></span></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="<?= base_url('master/produk') ?>">Produk</a></li>
-								<li><a href="<?= base_url('master/kain') ?>">Kain</a></li>
-								<li><a href="<?= base_url('master/sablon') ?>">Sablon</a></li>
+								<li><a href="<?= base_url('produk') ?>">Produk</a></li>
+								<li><a href="<?= base_url('kain') ?>">Kain</a></li>
+								<li><a href="<?= base_url('sablon') ?>">Sablon</a></li>
 							</ul>
 						</li>
-						<li class="<?= $this->uri->segment(1) == 'riwayat' ? 'active' : ''  ?>"><a href="<?= base_url('riwayat') ?>">Riwayat</a></li>
+						<li class=""><a href="<?= base_url('riwayat') ?>">Riwayat</a></li>
 					</ul>
 				</div>
 				<div class="navbar-custom-menu">
