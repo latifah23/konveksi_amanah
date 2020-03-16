@@ -29,7 +29,8 @@
 						<thead>
 							<tr>
 								<th width="5%">No.</th>
-								<th style="min-width: 160px; width: 753px;">Nama Kain</th>
+								<th style="min-width: 140px; width: 600px;">Nama Kain</th>
+								<th style="min-width: 20px; width: 153px;">Harga Kain</th>
 								<th style="min-width: 10px; width: 227px;">Tindakan</th>
 							</tr>
 						</thead>
@@ -39,6 +40,7 @@
 								<tr>
 									<td><?= $key+1 ?></td>
 									<td><?= $value['nama_kain'] ?></td>
+									<td><?= $value['harga'] ?></td>
 									<td class="text-center">
 								
 										<a href="<?php echo base_url("kain/edit_kain/" . $value['id_kain']) ?>" class="btn btn-flat btn-warning btn-xs"><i class="fa fa-edit"></i></a>
@@ -74,6 +76,10 @@
 							<div class="form-group">
 								<label for="nama_kain">Nama Kain</label>
 								<input type="text" class="form-control" id="nama_kain" name="nama_kain">
+							</div>
+							<div class="form-group">
+								<label for="harga">Harga Kain</label>
+								<input type="text" class="form-control" id="harga" name="harga">
 							</div>
 							<div class="modal-footer">
 								<button type="submit" class="btn btn-default waves-effect waves-light">Save</button>

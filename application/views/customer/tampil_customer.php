@@ -31,13 +31,49 @@
                                    <td><?= $customer['nama'] ?></td>
                               </tr>
                               <tr>
-                                   <th scope="row">2</th>
-                                   <td>Jacob</td>
+							<th scope="row">Username</th>
+                                   <td><?= $customer['username'] ?></td>
+                              </tr>
+						<tr>
+							<th scope="row">Password</th>
+                                   <td><?= $customer['password'] ?></td>
+                              </tr>
+						<tr>
+							<th scope="row">Jenis Kelamin</th>
+                                   <td><?= $customer['jekel'] ?></td>
+                              </tr>
+						<tr>
+                                   <th scope="row">E-mail</th>
+                                   <td><?= $customer['email'] ?></td>
                               </tr>
                               <tr>
-                                   <th scope="row">3</th>
-                                   <td>Larry</td>
+							<th scope="row">No. Telpon</th>
+                                   <td><?= $customer['notelp'] ?></td>
                               </tr>
+						<tr>
+							<th scope="row">No. WA</th>
+                                   <td><?= $customer['nowa'] ?></td>
+                              </tr>
+						<tr>
+							<th scope="row">Provinsi</th>
+                                   <td><?= $customer['provinsi'] ?></td>
+                              </tr>
+						<tr>
+                                   <th scope="row">Kota</th>
+                                   <td><?= $customer['kota'] ?></td>
+                              </tr>
+                              <tr>
+							<th scope="row">Kecamatan</th>
+                                   <td><?= $customer['kecamatan'] ?></td>
+                              </tr>
+						<tr>
+							<th scope="row">Kode pos</th>
+                                   <td><?= $customer['kodepos'] ?></td>
+                              </tr>
+						<tr>
+							<th scope="row">Alamat</th>
+                                   <td><?= $customer['alamat'] ?></td>
+                              </tr>						
                          </tbody>
                          </table>
 				</div>

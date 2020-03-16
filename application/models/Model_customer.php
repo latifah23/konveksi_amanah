@@ -9,7 +9,7 @@ class Model_customer extends CI_Model
 		return $this->db->get($this->_table)->result_array();
 	}
 
-	public function tambahDatacustomer()
+	public function tambahDataCustomer()
 	{
 		$post = $this->input->post();
 		$data = array(

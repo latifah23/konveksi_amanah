@@ -41,7 +41,7 @@ class Pesanan extends CI_Controller
 			$data['produk'] = $this->model_produk->getAll();
 			$data['customer'] = $this->model_customer->getAll();
 			$this->load->view('layouts/header');
-			$this->load->view('pesanan/_form_tambah_pesanan', $data);
+			$this->load->view('pesanan/tambah_pesanan', $data);
 			$this->load->view('layouts/footer');
 		} else {
 			$this->model_pemesanan->tambahDataPemesanan();
