@@ -70,7 +70,7 @@
 									<select id="produk" class="form-control select jenisProduk" name="id_produk">
 										<option value="" selected disabled>Pilih Produk</option>
 										<?php foreach ($produk as $key => $value) : ?>
-											<option value="<?= $value['id_produk'] ?>" name="<?= $value['nama'] ?>"> <?= $value['nama'] ?></option>
+											<option value="<?= $value['id_produk']?>"> <?= $value['nama_produk'] ?></option>
 										<?php endforeach; ?>
 									</select>
 								</div>
@@ -84,44 +84,40 @@
 						<h3 class="box-title">Data Produk Pemesanan</h3>
 					</div>
 					<div class="box-body">
-						<label for="input" class="col-sm-2 col-form-label">Jenis Kain</label>
+					<label for="input" class="col-sm-2 col-form-label">Jenis Kain</label>
 						<div class="col-sm-10">
-							<select class="form-control " style="width: 100%;" name="jenis_kain">
-								<option value="Lacos Katun">Lacos Katun</option>
-								<option value="TC">TC</option>
-								<option value="Polyester PE">Polyester PE</option>
-								<option value="Double katun">Double Katun</option>
+							<select id="kain" class="form-control select jenisKain" name="id_kain">
+								<option value="" selected disabled>Pilih Kain</option>
+								<?php foreach ($kain as $key => $value) : ?>
+								<option value="<?= $value['id_kain']?>"> <?= $value['nama_kain'] ?></option>
+								<?php endforeach; ?>
 							</select>
 						</div>
-								
 						<br>
 						<br>
-
-						<label for="input" class="col-sm-2 col-form-label">Warna Kain</label>
+					<label for="input" class="col-sm-2 col-form-label">Warna Kain</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="input" placeholder="Warna Kain" name="warna">
 						</div>
 						<br>
 						<br>
-
-						<label for="input" class="col-sm-2 col-form-label">Jenis Sablon</label>
-						<div class="col-sm-10">
-							<select class="form-control " style="width: 100%;" name="jenis_sablon">
-								<option value="Rubber">Rubber</option>
-								<option value="Plastisol">Plastisol</option>
+					<label for="input" class="col-sm-2 col-form-label">Jenis Sablon</label>
+					<div class="col-sm-10">
+							<select id="sablon" class="form-control select jenisKain" name="id_sablon">
+								<option value="" selected disabled>Pilih Sablon</option>
+								<?php foreach ($sablon as $key => $value) : ?>
+								<option value="<?= $value['id_sablon']?>"> <?= $value['nama_sablon'] ?></option>
+								<?php endforeach; ?>
 							</select>
 						</div>
-
 						<br>
 						<br>
-
 						<label for="input" class="col-sm-2 col-form-label">Jumlah</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" id="input" placeholder="Jumlah" name="jumlah">
 						</div>
 						<br>
 						<br>
-						
 						<br>
 						<table class="table table-bordered" id="customFields">
 							<thead>

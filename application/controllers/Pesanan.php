@@ -9,7 +9,9 @@ class Pesanan extends CI_Controller
 		$this->load->model('model_produk');
 		$this->load->model("model_customer");
 		$this->load->model("model_pemesanan");
-
+		$this->load->model("model_produk");
+		$this->load->model("model_kain");
+		$this->load->model("model_sablon");
 		$this->load->library('form_validation');
 	}
 	public function index()
@@ -17,6 +19,7 @@ class Pesanan extends CI_Controller
 		$data['produk'] = $this->model_produk->getAll();
 		$data['customer'] = $this->model_customer->getAll();
 		$data['pemesanan'] = $this->model_pemesanan->getAll();
+		
 		$this->load->view('layouts/header');
 		$this->load->view('pesanan/index', $data);
 		$this->load->view('layouts/footer');
@@ -40,6 +43,8 @@ class Pesanan extends CI_Controller
 			$data['kode_order']  = $this->model_pemesanan->cekkodeorder();
 			$data['produk'] = $this->model_produk->getAll();
 			$data['customer'] = $this->model_customer->getAll();
+			$data['kain'] = $this->model_kain->getAll();
+			$data['sablon'] = $this->model_sablon->getAll();
 			$this->load->view('layouts/header');
 			$this->load->view('pesanan/tambah_pesanan', $data);
 			$this->load->view('layouts/footer');
