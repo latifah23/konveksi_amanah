@@ -19,7 +19,7 @@ class Pesanan extends CI_Controller
 		$data['produk'] = $this->model_produk->getAll();
 		$data['customer'] = $this->model_customer->getAll();
 		$data['pemesanan'] = $this->model_pemesanan->getAll();
-		
+
 		$this->load->view('layouts/header');
 		$this->load->view('pesanan/index', $data);
 		$this->load->view('layouts/footer');
@@ -28,16 +28,21 @@ class Pesanan extends CI_Controller
 
 	public function tambah_pesanan()
 	{
-		$this->form_validation->set_rules('id_customer', 'Id_customer', 'required');
-		$this->form_validation->set_rules('id_pegawai', 'Id_pegawai', 'required');
-		$this->form_validation->set_rules('durasi_pemesanan', 'Durasi_Pemesanan', 'required');
-		$this->form_validation->set_rules('kode_order', 'Kode_Order', 'required');
-		$this->form_validation->set_rules('status', 'Status', 'required');
-		$this->form_validation->set_rules('id_produk', 'Id_produk', 'required');
+		// $this->form_validation->set_rules('id_customer', 'Id_customer', 'required');
+		// $this->form_validation->set_rules('kode_order', 'Kode_Order', 'required');
+		// $this->form_validation->set_rules('tanggal_pesan', 'Tanggal_Pesanan', 'required');
+		// $this->form_validation->set_rules('tanggal_ambil', 'Tanggal_Ambil', 'required');
+		// $this->form_validation->set_rules('id_produk', 'Id_produk', 'required');
 		$this->form_validation->set_rules('jenis_kain', 'Jenis_Kain', 'required');
 		$this->form_validation->set_rules('warna', 'Warna', 'required');
 		$this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
 		$this->form_validation->set_rules('jenis_sablon', 'jenis_sablon', 'required');
+		// $this->form_validation->set_rules('ukuran[]', 'Ukuran', 'required');
+		// $this->form_validation->set_rules('jekel[]', 'Jekel', 'required');
+		// $this->form_validation->set_rules('panjang[]', 'Panjang', 'required');
+		// $this->form_validation->set_rules('enam[]', 'Enam', 'required');
+		// $this->form_validation->set_rules('tiga[]', 'Tiga', 'required');
+		// $this->form_validation->set_rules('pendek[]', 'Pendek', 'required');
 
 		if ($this->form_validation->run() == false) {
 			$data['kode_order']  = $this->model_pemesanan->cekkodeorder();
@@ -49,7 +54,8 @@ class Pesanan extends CI_Controller
 			$this->load->view('pesanan/tambah_pesanan', $data);
 			$this->load->view('layouts/footer');
 		} else {
-			$this->model_pemesanan->tambahDataPemesanan();
+
+			$this->model_pemesanan->tambahDataPesan();
 			$this->session->set_flashdata('flash', 'Ditambahkan');
 			redirect('pesanan');
 		}
@@ -60,8 +66,8 @@ class Pesanan extends CI_Controller
 		$id = $this->input->post('id', TRUE);
 		$data['pesanan'] = $this->model_pemesanan->getByid($id);
 		$questions_id = $data['pesanan']['id'];
-		$queryGetpesanan = "SELECT `pemesanan` .*, 
-			`customer`.`nama` as nama_customer, 
+		$queryGetpesanan = "SELECT `pemesanan` .*,
+			`customer`.`nama` as nama_customer,
 			`pegawai`.`nama` as nama_pegawai,
 			`produk`.`nama` as nama_produk,
 			`ukuran`.`xs_pendek`as ukuran_xs_pendek,
@@ -81,11 +87,11 @@ class Pesanan extends CI_Controller
 			`ukuran`.`jumbo_pendek`as ukuran_jumbo_pendek,
 			`ukuran`.`jumbo_panjang`as ukuran_jumbo_panjang,
 			`ukuran`.`jumlah` as jumlah
-			FROM `pemesanan` 
+			FROM `pemesanan`
 			JOIN `customer` ON `pemesanan`.`id_customer` = `customer`. `id_customer`
 			JOIN `pegawai`  ON `pemesanan`.`id_pegawai` = `pegawai`. `id_pegawai`
 			JOIN	`produk` ON `pemesanan`.`id_produk` = `produk`. `id_produk`
-			JOIN `ukuran`	ON $questions_id = `ukuran`.`pemesanan_id` 	
+			JOIN `ukuran`	ON $questions_id = `ukuran`.`pemesanan_id`
 			WHERE `pemesanan`.`id` = $questions_id
 		";
 
@@ -131,11 +137,11 @@ class Pesanan extends CI_Controller
 
 		$data['pesanan'] = $this->model_pemesanan->getBykode($kode);
 		$pesanan_id = $data['pesanan']['id'];
-		$queryGetquestion = "SELECT `pemesanan` .*, 
-			`customer`.`nama` as nama_customer,`customer`.`alamat`as alamat_customer,`customer`.`notelp`as notelp_customer,`customer`.`email` as email_customer, 
+		$queryGetquestion = "SELECT `pemesanan` .*,
+			`customer`.`nama` as nama_customer,`customer`.`alamat`as alamat_customer,`customer`.`notelp`as notelp_customer,`customer`.`email` as email_customer,
 			`pegawai`.`nama` as nama_pegawai,
 			`produk`.`nama` as nama_produk
-			FROM `pemesanan` 
+			FROM `pemesanan`
 			JOIN `customer` ON `pemesanan`.`id_customer` = `customer`. `id_customer`
 			JOIN `pegawai`  ON `pemesanan`.`id_pegawai` = `pegawai`. `id_pegawai`
 			JOIN	`produk` ON `pemesanan`.`id_produk` = `produk`. `id_produk`

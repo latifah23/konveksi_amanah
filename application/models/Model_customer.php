@@ -6,6 +6,9 @@ class Model_customer extends CI_Model
 
 	public function getAll()
 	{
+
+
+
 		return $this->db->get($this->_table)->result_array();
 	}
 
@@ -13,21 +16,19 @@ class Model_customer extends CI_Model
 	{
 		$post = $this->input->post();
 		$data = array(
-			"nama"         => $post['nama'],
-			"username"     => $post['username'],
-			"password"     => $post['password'],
-			"jekel"    	=> $post['jekel'],
-			'email'		=> $post["email"],
-			'notelp'		=> $post["notelp"],
-			'nowa'		=> $post["nowa"],
-			'provinsi'	=> $post["provinsi"],
-			'kota'		=> $post["kota"],
-			'kecamatan'	=> $post["kecamatan"],
-			'kodepos'		=> $post["kodepos"],
-			'alamat'       => $post["alamat"],
-			
+			"nama"      => $post['nama'],
+			"username"  => $post['username'],
+			"password"  => $post['password'],
+			"jekel"     => $post['jekel'],
+			'email'     => $post["email"],
+			'notelp'    => $post["notelp"],
+			'nowa'      => $post["nowa"],
+			'provinsi'  => $post["provinsi"],
+			'kota'      => $post["kota"],
+			'kecamatan' => $post["kecamatan"],
+			'kodepos'   => $post["kodepos"],
+			'alamat'    => $post["alamat"],
 		);
-
 		$this->db->insert('customer', $data);
 	}
 
@@ -49,20 +50,22 @@ class Model_customer extends CI_Model
 
 	public function update_customer()
 	{
+
+
 		$post = $this->input->post();
 		$data = array(
-			"nama"         => $post['nama'],
-			"username"     => $post['username'],
-			"password"     => $post['password'],
-			"jekel"    	=> $post['jekel'],
-			'email'		=> $post["email"],
-			'notelp'		=> $post["notelp"],
-			'nowa'		=> $post["nowa"],
-			'provinsi'	=> $post["provinsi"],
-			'kota'		=> $post["kota"],
-			'kecamatan'	=> $post["kecamatan"],
-			'kodepos'		=> $post["kodepos"],
-			'alamat'       => $post["alamat"],
+			"nama"      => $post['nama'],
+			"username"  => $post['username'],
+			"password"  => $post['password'],
+			"jekel"     => $post['jekel'],
+			'email'     => $post["email"],
+			'notelp'    => $post["notelp"],
+			'nowa'      => $post["nowa"],
+			'provinsi'  => $post["provinsi"],
+			'kota'      => $post["kota"],
+			'kecamatan' => $post["kecamatan"],
+			'kodepos'   => $post["kodepos"],
+			'alamat'    => $post["alamat"],
 		);
 		$this->db->where('id_customer', $this->input->post('id_customer'));
 		$this->db->update('customer', $data);

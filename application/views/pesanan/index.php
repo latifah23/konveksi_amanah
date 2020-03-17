@@ -19,11 +19,10 @@
 							<tr>
 								<th>No</th>
 								<th>Kode Order</th>
-								<th>customer</th>
-								<th>Produk</th>
-								<th>Pegawai</th>
-								<th>Durasi Pemesanan</th>
-								<th>Status</th>
+								<!-- <th>customer</th> -->
+								<th>Tanggal Pesan</th>
+								<th>Tanggal Pengambilan</th>
+								<!-- <th>Produk</th> -->
 								<th>Tindakan</th>
 							</tr>
 						</thead>
@@ -33,25 +32,16 @@
 								<tr>
 									<td><?= $i++ ?></td>
 									<td><?= $value['kode_order'] ?></td>
-									<td><?= $value['nama_customer'] ?></td>
-									<td><?= $value['nama_produk'] ?></td>
-									<td><?= $value['nama_pegawai'] ?></td>
-									<td><?= $value['durasi_pemesanan'] ?></td>
-									<td>
-										<?php if ($value['status'] == 1) : ?>
-											Selsai
-										<?php else : ?>
-											Proses
-										<?php endif; ?>
-
-									</td>
-
+									<!-- <td><?= $value['nama_customer'] ?></td> -->
+									<td><?= $value['tanggal_pesan'] ?></td>
+									<td><?= $value['tanggal_ambil'] ?></td>
+									<!-- <td><?= $value[''] ?></td> -->
 									<td>
 										<!-- Button trigger modal -->
 
-										<a type="button" data-id="<?= $value['id'] ?>" class="btn tampilUbah btn-warning btn-xs" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-fw fa-edit"></i></a>
+										<a type="button" data-id="<?= $value['id_pesan'] ?>" class="btn tampilUbah btn-warning btn-xs" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-fw fa-edit"></i></a>
 										<a href="<?= base_url('/pesanan/laporan_pdf/') . $value['kode_order'] ?>" class="btn btn-info btn-xs"><i class="fa fa-fw fa-file-pdf-o"></i></a>
-										<a href="<?= base_url('/pesanan/hapus_pesanan/') . $value['id'] ?>" class="btn btn-danger btn-xs" onclick="return confirm('yakin?')"><i class="fa fa-fw fa-trash-o	"></i></a>
+										<a href="<?= base_url('/pesanan/hapus_pesanan/') . $value['id_pesan'] ?>" class="btn btn-danger btn-xs" onclick="return confirm('yakin?')"><i class="fa fa-fw fa-trash-o	"></i></a>
 									</td>
 
 								</tr>
@@ -224,7 +214,7 @@
 									</form>
 
 								</div>
-								<!-- /.tab-pane -->																					
+								<!-- /.tab-pane -->
 								<div class="tab-pane" id="tab_2-2">
 									The European languages are members of the same family. Their separate existence is a myth.
 									For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
