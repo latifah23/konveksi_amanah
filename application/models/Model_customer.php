@@ -51,7 +51,6 @@ class Model_customer extends CI_Model
 	public function update_customer()
 	{
 
-
 		$post = $this->input->post();
 		$data = array(
 			"nama"      => $post['nama'],

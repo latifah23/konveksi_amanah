@@ -170,8 +170,6 @@
 						<br>
 						<br>
 
-
-
 						<label for="exampleInputFile" class="col-sm-2 col-form-label">Upload Design</label>
 						<div class="input-group">
 							<div class="costum-file col-sm-10">
@@ -213,7 +211,7 @@
 		var $id = $(this).attr('data-id');
 		$ids = parseInt($id) + 1;
 
-		var $data = '<tr><td><select class="form-control " style="width: 100%;" name="ukuran[]"><option value="XS">XS</option><option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option><option value="XXL">XXL</option><option value="XXXL">XXXL</option><option value="Jumbo">Jumbo</option></select></td><td><select class="form-control " style="width: 100%;" name="jekel[]"><option value="wanita">wanita</option><option value="pria">pria</option></select></td><td><input type="text" class="form-control" name="panjang" id="panjang" placeholder="panjang"></td><td><input type="text" class="form-control" name="enam[]" id="enam" placeholder="6/8"></td><td><input type="text" class="form-control" name="tiga[]" id="tiga" placeholder="3/4"></td><td><input type="text" class="form-control" name="pendek" id="pendek" placeholder="pendek"></td><td><button  type="button" class="btn btn-block btn-danger hpsBaris " style="width:auto; float:right; margin-bottom:10px;" data-id="0" > - </button></td></tr>';
+		var $data = '<tr><td><select class="form-control " style="width: 100%;" name="ukuran[]"><option value="XS">XS</option><option value="S">S</option><option value="M">M</option><option value="L">L</option><option value="XL">XL</option><option value="XXL">XXL</option><option value="XXXL">XXXL</option><option value="Jumbo">Jumbo</option></select></td><td><select class="form-control " style="width: 100%;" name="jekel[]"><option value="wanita">wanita</option><option value="pria">pria</option></select></td><td><input type="text" class="form-control" name="panjang[]" id="panjang" placeholder="panjang"></td><td><input type="text" class="form-control" name="enam[]" id="enam" placeholder="6/8"></td><td><input type="text" class="form-control" name="tiga[]" id="tiga" placeholder="3/4"></td><td><input type="text" class="form-control" name="pendek[]" id="pendek" placeholder="pendek"></td><td><button  type="button" class="btn btn-block btn-danger hpsBaris " style="width:auto; float:right; margin-bottom:10px;" data-id="0" > - </button></td></tr>';
 
 		$('.listDetail').append($data);
 		$('.tbhBaris').attr('data-id', $ids);

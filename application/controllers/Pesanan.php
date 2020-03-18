@@ -28,21 +28,22 @@ class Pesanan extends CI_Controller
 
 	public function tambah_pesanan()
 	{
-		// $this->form_validation->set_rules('id_customer', 'Id_customer', 'required');
-		// $this->form_validation->set_rules('kode_order', 'Kode_Order', 'required');
-		// $this->form_validation->set_rules('tanggal_pesan', 'Tanggal_Pesanan', 'required');
-		// $this->form_validation->set_rules('tanggal_ambil', 'Tanggal_Ambil', 'required');
-		// $this->form_validation->set_rules('id_produk', 'Id_produk', 'required');
-		$this->form_validation->set_rules('jenis_kain', 'Jenis_Kain', 'required');
+		$this->form_validation->set_rules('id_customer', 'Id_customer', 'required');
+		$this->form_validation->set_rules('kode_order', 'Kode_Order', 'required');
+		$this->form_validation->set_rules('tanggal_pesan', 'Tanggal_Pesanan', 'required');
+		$this->form_validation->set_rules('tanggal_ambil', 'Tanggal_Ambil', 'required');
+		$this->form_validation->set_rules('id_produk', 'Id_produk', 'required');
+		$this->form_validation->set_rules('id_kain', 'Id_Kain', 'required');
 		$this->form_validation->set_rules('warna', 'Warna', 'required');
+		$this->form_validation->set_rules('id_sablon', 'Id_Sablon', 'required');
+		$this->form_validation->set_rules('jumlah', 'Jumlah', 'required');
 		$this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
-		$this->form_validation->set_rules('jenis_sablon', 'jenis_sablon', 'required');
-		// $this->form_validation->set_rules('ukuran[]', 'Ukuran', 'required');
-		// $this->form_validation->set_rules('jekel[]', 'Jekel', 'required');
-		// $this->form_validation->set_rules('panjang[]', 'Panjang', 'required');
-		// $this->form_validation->set_rules('enam[]', 'Enam', 'required');
-		// $this->form_validation->set_rules('tiga[]', 'Tiga', 'required');
-		// $this->form_validation->set_rules('pendek[]', 'Pendek', 'required');
+		$this->form_validation->set_rules('ukuran[]', 'Ukuran', 'required');
+		$this->form_validation->set_rules('jekel[]', 'Jekel', 'required');
+		$this->form_validation->set_rules('panjang[]', 'Panjang', 'required');
+		$this->form_validation->set_rules('enam[]', 'Enam', 'required');
+		$this->form_validation->set_rules('tiga[]', 'Tiga', 'required');
+		$this->form_validation->set_rules('pendek[]', 'Pendek', 'required');
 
 		if ($this->form_validation->run() == false) {
 			$data['kode_order']  = $this->model_pemesanan->cekkodeorder();
@@ -63,43 +64,43 @@ class Pesanan extends CI_Controller
 
 	public function get_edit_pesanan()
 	{
-		$id = $this->input->post('id', TRUE);
-		$data['pesanan'] = $this->model_pemesanan->getByid($id);
-		$questions_id = $data['pesanan']['id'];
-		$queryGetpesanan = "SELECT `pemesanan` .*,
-			`customer`.`nama` as nama_customer,
-			`pegawai`.`nama` as nama_pegawai,
-			`produk`.`nama` as nama_produk,
-			`ukuran`.`xs_pendek`as ukuran_xs_pendek,
-			`ukuran`.`xs_panjang`as ukuran_xs_panjang,
-			`ukuran`.`s_pendek`as ukuran_s_pendek,
-			`ukuran`.`s_panjang`as ukuran_s_panjang,
-			`ukuran`.`m_pendek`as ukuran_m_pendek,
-			`ukuran`.`m_panjang`as ukuran_m_panjang,
-			`ukuran`.`l_pendek`as ukuran_l_pendek,
-			`ukuran`.`l_panjang`as ukuran_l_panjang,
-			`ukuran`.`xl_pendek`as ukuran_xl_pendek,
-			`ukuran`.`xl_panjang`as ukuran_xl_panjang,
-			`ukuran`.`xxl_pendek`as ukuran_xxl_pendek,
-			`ukuran`.`xxl_panjang`as ukuran_xxl_panjang,
-			`ukuran`.`xxxl_pendek`as ukuran_xxxl_pendek,
-			`ukuran`.`xxxl_panjang`as ukuran_xxxl_panjang,
-			`ukuran`.`jumbo_pendek`as ukuran_jumbo_pendek,
-			`ukuran`.`jumbo_panjang`as ukuran_jumbo_panjang,
-			`ukuran`.`jumlah` as jumlah
-			FROM `pemesanan`
-			JOIN `customer` ON `pemesanan`.`id_customer` = `customer`. `id_customer`
-			JOIN `pegawai`  ON `pemesanan`.`id_pegawai` = `pegawai`. `id_pegawai`
-			JOIN	`produk` ON `pemesanan`.`id_produk` = `produk`. `id_produk`
-			JOIN `ukuran`	ON $questions_id = `ukuran`.`pemesanan_id`
-			WHERE `pemesanan`.`id` = $questions_id
-		";
+		// $id = $this->input->post('id', TRUE);
+		// $data['pesanan'] = $this->model_pemesanan->getByid($id);
+		// $questions_id = $data['pesanan']['id'];
+		// $queryGetpesanan = "SELECT `pemesanan` .*,
+		// 	`customer`.`nama` as nama_customer,
+		// 	`pegawai`.`nama` as nama_pegawai,
+		// 	`produk`.`nama` as nama_produk,
+		// 	`ukuran`.`xs_pendek`as ukuran_xs_pendek,
+		// 	`ukuran`.`xs_panjang`as ukuran_xs_panjang,
+		// 	`ukuran`.`s_pendek`as ukuran_s_pendek,
+		// 	`ukuran`.`s_panjang`as ukuran_s_panjang,
+		// 	`ukuran`.`m_pendek`as ukuran_m_pendek,
+		// 	`ukuran`.`m_panjang`as ukuran_m_panjang,
+		// 	`ukuran`.`l_pendek`as ukuran_l_pendek,
+		// 	`ukuran`.`l_panjang`as ukuran_l_panjang,
+		// 	`ukuran`.`xl_pendek`as ukuran_xl_pendek,
+		// 	`ukuran`.`xl_panjang`as ukuran_xl_panjang,
+		// 	`ukuran`.`xxl_pendek`as ukuran_xxl_pendek,
+		// 	`ukuran`.`xxl_panjang`as ukuran_xxl_panjang,
+		// 	`ukuran`.`xxxl_pendek`as ukuran_xxxl_pendek,
+		// 	`ukuran`.`xxxl_panjang`as ukuran_xxxl_panjang,
+		// 	`ukuran`.`jumbo_pendek`as ukuran_jumbo_pendek,
+		// 	`ukuran`.`jumbo_panjang`as ukuran_jumbo_panjang,
+		// 	`ukuran`.`jumlah` as jumlah
+		// 	FROM `pemesanan`
+		// 	JOIN `customer` ON `pemesanan`.`id_customer` = `customer`. `id_customer`
+		// 	JOIN `pegawai`  ON `pemesanan`.`id_pegawai` = `pegawai`. `id_pegawai`
+		// 	JOIN	`produk` ON `pemesanan`.`id_produk` = `produk`. `id_produk`
+		// 	JOIN `ukuran`	ON $questions_id = `ukuran`.`pemesanan_id`
+		// 	WHERE `pemesanan`.`id` = $questions_id
+		// ";
 
-		$query_pesanan = $this->db->query($queryGetpesanan)->row_array();
-		// $query_ukuran = $this->db->query($queryGetukuran)->row_array();
-		$data['get_pesanan'] = $query_pesanan;
-		// $data['get_ukuran']	= $query_ukuran;
-		echo json_encode($data['get_pesanan']);
+		// $query_pesanan = $this->db->query($queryGetpesanan)->row_array();
+		// // $query_ukuran = $this->db->query($queryGetukuran)->row_array();
+		// $data['get_pesanan'] = $query_pesanan;
+		// // $data['get_ukuran']	= $query_ukuran;
+		// echo json_encode($data['get_pesanan']);
 		// response_json($data);
 
 	}
@@ -134,7 +135,6 @@ class Pesanan extends CI_Controller
 	}
 	public function laporan_pdf($kode)
 	{
-
 		$data['pesanan'] = $this->model_pemesanan->getBykode($kode);
 		$pesanan_id = $data['pesanan']['id'];
 		$queryGetquestion = "SELECT `pemesanan` .*,
@@ -155,5 +155,11 @@ class Pesanan extends CI_Controller
 		$this->pdf->setPaper('A4', 'potrait');
 		$this->pdf->filename = "laporan-petanikode.pdf";
 		$this->pdf->load_view('pesanan/laporan_pdf', $data);
+	}
+
+	public function tampil_pesanan($kode)
+	{
+		$data['pesanan'] = $this->model_pemesanan->getBykode($kode);
+		echo response_json($data);
 	}
 }

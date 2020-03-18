@@ -31,7 +31,7 @@
 							<?php foreach ($pemesanan as $key => $value) : ?>
 								<tr>
 									<td><?= $i++ ?></td>
-									<td><?= $value['kode_order'] ?></td>
+									<td><a href="<?= base_url('/pesanan/tampil_pesanan/') . $value['kode_order'] ?>"><?= $value['kode_order'] ?></a></td>
 									<!-- <td><?= $value['nama_customer'] ?></td> -->
 									<td><?= $value['tanggal_pesan'] ?></td>
 									<td><?= $value['tanggal_ambil'] ?></td>
