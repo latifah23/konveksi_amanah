@@ -3,7 +3,7 @@
 		<!-- Content Header (Page header) -->
 		<section class="content-header">
 			<h1>
-				Edit Data Sablon
+				Edit Data Customer
 			</h1>
 		</section>
 		<!-- Main content -->
@@ -16,7 +16,7 @@
 				<?php endif ?>
 				<form action="<?= base_url('sablon/update_sablon/' )?>" method="post">
 					<div class="modal-body"> 
-						<input type="hidden" name="id_sablon" value="<?= $sablon['id_sablon'] ?>">
+						<input type="hidden" name="id_customer" value="<?= $customer['id_customer'] ?>">
 						<div class="form-group">
                                         <label for="nama">Nama</label>
                                         <input type="text" class="form-control" id="nama" name="nama" value="<?= $customer['nama'] ?>">
@@ -65,7 +65,7 @@
 
 					</div>
 					<div class="modal-footer">
-						<a class="btn btn-info " href="<?= base_url('sablon') ?>">Kembali</a>
+						<a class="btn btn-info " href="<?= base_url('customer') ?>">Kembali</a>
 						<button type="submit" class="btn btn-primary">Save changes</button>
 					</div>
 				</form>

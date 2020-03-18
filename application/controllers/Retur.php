@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Pesanan extends CI_Controller
+class Retur extends CI_Controller
 {
 	public function __construct()
 	{

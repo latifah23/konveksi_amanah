@@ -58,7 +58,7 @@ class Customer extends CI_Controller
 		
 		if ($this->form_validation->run() ==  FALSE) {
 			$this->load->view("layouts/header");
-			$this->load->view('customer/_form_edit_customer', $data);
+			$this->load->view('customer/edit_customer', $data);
 			$this->load->view("layouts/footer");
 		} else {
 			$this->model_customer->update_customer();
