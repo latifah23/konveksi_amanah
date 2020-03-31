@@ -4,11 +4,51 @@
 		<section class="content-header">
 			<h1>
 				Data Pesanan Masuk
-				<a href="<?= base_url('/pesanan/tambah_pesanan') ?>" type="button" class="btn btn-block btn-primary" style="width:auto; float:right;">Tambah Pesanan</a>
-
 			</h1>
+			<br>
+			<br>
 		</section>
+	<form role="form" action="<?= base_url('pesanan/action_search') ?>" method="post" enctype="multipart/form-data">
+		<div class="row">
+			<div class="col-md-4">
+				<label>Tahun</label>
+				<input type="text" class="form-control" id="input" placeholder="Tahun" name="tahun" value="<?php if(!empty($search['tahun'])){echo $search['tahun'];} ?>" >
+			</div>
 
+			<div id="bulan" class="col-md-4" style="display: block;" >
+					<label>Bulan : </label>
+					<select id="bulan" name="bulan" class="form-control" >
+								<option value="01" <?php if ($search['bulan'] =='01'){echo 'selected';}?>> Januari</option>
+								<option value="02"<?php if ($search['bulan'] =='02'){echo 'selected';}?>> Februari</option>
+								<option value="03" <?php if ($search['bulan'] =='03'){echo 'selected';}?>> Maret</option>
+								<option value="04"<?php if ($search['bulan'] =='04'){echo 'selected';}?>> April</option>
+								<option value="05"<?php if ($search['bulan'] =='05'){echo 'selected';}?>> Mei</option>
+								<option value="06"<?php if ($search['bulan'] =='06'){echo 'selected';}?>> Juni</option>
+								<option value="07"<?php if ($search['bulan'] =='07'){echo 'selected';}?>> Juli</option>
+								<option value="08"<?php if ($search['bulan'] =='08'){echo 'selected';}?>> Agustus</option>
+								<option value="09"<?php if ($search['bulan'] =='09'){echo 'selected';}?>> September</option>
+								<option value="010"<?php if ($search['bulan'] =='010'){echo 'selected';}?>> Oktober</option>
+								<option value="011"<?php if ($search['bulan'] =='011'){echo 'selected';}?>> November</option>
+								<option value="012"<?php if ($search['bulan'] =='012'){echo 'selected';}?>> Desember</option>
+					</select>
+			</div>
+			<div class="col-md-2">
+				<label>&nbsp;</label>
+					<button id="btn-search" name="search" value="tampilkan" type="submit" class="btn btn-info btn-block btn-flat btn-md" style="width:auto; float:right;">
+					
+					<!-- <button id="btn-search" onclick="search_data();" class="btn btn-info btn-block btn-flat btn-md"> -->
+					<i class="fa fa-search"></i>
+					</button>
+			</div>
+			<div class="col-md-2">
+				<label>&nbsp;</label>
+					<a href="<?= base_url('/pesanan/tambah_pesanan') ?>" type="button" class="btn btn-block btn-primary" style="width:auto; float:right;">
+						<i class="fa fa-plus"></i> 
+						Tambah Data
+					</a>
+			</div>
+    		</div>
+	</form>
 		<!-- Main content -->
 		<section class="content">
 			<div class="box box-primary">
@@ -18,11 +58,11 @@
 						<thead>
 							<tr>
 								<th>No</th>
-								<th>Kode Order</th>
-								<th>customer</th>
+								<th>Id Pesanan</th>
+								<th>Customer</th>
+								<th>Tanggal Pesan</th>
+								<th>Tanggal Ambil</th>
 								<th>Produk</th>
-								<th>Pegawai</th>
-								<th>Durasi Pemesanan</th>
 								<th>Status</th>
 								<th>Tindakan</th>
 							</tr>
@@ -32,26 +72,19 @@
 							<?php foreach ($pemesanan as $key => $value) : ?>
 								<tr>
 									<td><?= $i++ ?></td>
-									<td><?= $value['kode_order'] ?></td>
-									<td><?= $value['nama_customer'] ?></td>
-									<td><?= $value['nama_produk'] ?></td>
-									<td><?= $value['nama_pegawai'] ?></td>
-									<td><?= $value['durasi_pemesanan'] ?></td>
-									<td>
-										<?php if ($value['status'] == 1) : ?>
-											Selsai
-										<?php else : ?>
-											Proses
-										<?php endif; ?>
-
-									</td>
-
+									<td><?= $value['id_pesan'] ?></td>
+									<td><?= $value['nama'] ?></td>
+									<td><?= $value['tanggal_pesan'] ?></td>
+									<td><?= $value['tanggal_ambil'] ?></td>
+									<td><?= $value['produk'] ?></td>
+									<td><?= $value['status'] ?></td>
 									<td>
 										<!-- Button trigger modal -->
+										<a href="<?= base_url('/pesanan/laporan_pdf/') . $value['id_pesan'] ?>" class="btn btn-info btn-xs"><i class="fa fa-fw fa-file-pdf-o"></i></a>
+										<a href="<?= base_url('/pesanan/update_pesanan/') . $value['id_pesan'] ?>" class="btn btn-success btn-xs"><i class="fa fa-fw fa-pencil"></i></a>
+										<a href="<?= base_url('/pesanan/detail_pesan/') . $value['id_pesan'] ?>" class="btn btn-warning btn-xs"><i class="fa fa-fw fa-search"></i></a>
+										<a href="<?= base_url('/pesanan/hapus_pesanan/') . $value['id_pesan']?>" class="btn btn-danger btn-xs" onclick="return confirm('yakin?')"><i class="fa fa-fw fa-trash-o	"></i></a>
 
-										<a type="button" data-id="<?= $value['id'] ?>" class="btn tampilUbah btn-warning btn-xs" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-fw fa-edit"></i></a>
-										<a href="<?= base_url('/pesanan/laporan_pdf/') . $value['kode_order'] ?>" class="btn btn-info btn-xs"><i class="fa fa-fw fa-file-pdf-o"></i></a>
-										<a href="<?= base_url('/pesanan/hapus_pesanan/') . $value['id'] ?>" class="btn btn-danger btn-xs" onclick="return confirm('yakin?')"><i class="fa fa-fw fa-trash-o	"></i></a>
 									</td>
 
 								</tr>
@@ -96,11 +129,11 @@
 										<div class="modal-body">
 											<input type="hidden" name="id" id="id">
 											<div class="form-group">
-												<label for="kode_order">Kode Order</label>
+												<label for="kode_order">Id Pesan</label>
 												<input type="text" class="form-control" id="kode_order" name="kode_order" readonly>
 											</div>
 											<div class="form-group">
-												<label for="customer">customer</label>
+												<label for="customer">Customer</label>
 												<select class="form-control" name="id_customer" id="id_customer">
 													<?php foreach ($customer as $key => $value) : ?>
 														<option value="<?= $value['id_customer'] ?>"><?= $value['nama'] ?></option>
@@ -108,12 +141,12 @@
 												</select>
 											</div>
 											<div class="form-group">
-												<label>Nama Pegawai</label>
-												<select class="form-control" name="id_pegawai" id="id_pegawai">
-													<?php foreach ($pegawai as $key => $value) : ?>
-														<option value="<?= $value['id_pegawai'] ?>"><?= $value['nama'] ?></option>
-													<?php endforeach ?>
-												</select>
+												<label for="tanggal_pesan">Tanggal Pesan</label>
+												<input type="text" class="form-control" id="tanggal_pesan" name="tanggal_pesan">
+											</div>
+											<div class="form-group">
+												<label for="tanggal_ambil">Tanggal Ambil</label>
+												<input type="text" class="form-control" id="tanggal_ambil" name="tanggal_ambil">
 											</div>
 											<div class="form-group">
 												<label for="produk">Produk</label>
@@ -122,92 +155,6 @@
 														<option value="<?= $value['id_produk'] ?>"><?= $value['nama'] ?></option>
 													<?php endforeach ?>
 												</select>
-											</div>
-											<div class="form-group">
-												<label for="durasi_pemesanan">Durasi Pemesanan</label>
-												<input type="text" class="form-control" id="durasi_pemesanan" name="durasi_pemesanan">
-											</div>
-											<div class="form-group">
-												<label for="kode_order">Jenis Kain</label>
-												<input type="text" class="form-control" id="jenis_kain" name="jenis_kain">
-											</div>
-											<div class="form-group">
-												<label for="kode_order">Warna </label>
-												<input type="text" class="form-control" id="warna" name="warna">
-											</div>
-											<div class="row">
-												<div class="col-md-12">
-													<div class="col-md-3">
-														<div class="form-group row">
-															<label for="input" class="col-sm-3 col-form-label">Ukuran</label>
-															<div class="col-sm-7">
-															</div>
-														</div>
-													</div>
-													<div class="col-md-3">
-														<div class="form-group row">
-															<label for="input" class="col-sm-3 col-form-label">XS</label>
-															<div class="col-sm-7">
-																<input type="text" class="form-control" id="xs_pendek" placeholder="pendek">
-																<input type="text" class="form-control" id="xs_panjang" placeholder="panjang"><br>
-															</div>
-
-															<label for="input" class="col-sm-3 col-form-label">L</label>
-															<div class="col-sm-7">
-																<input type="text" class="form-control" id="l_pendek" placeholder="pendek">
-																<input type="text" class="form-control" id="l_panjang" placeholder="panjang"><br>
-															</div>
-
-															<label for="input" class="col-sm-3 col-form-label">XXXL</label>
-															<div class="col-sm-7">
-																<input type="text" class="form-control" id="xxxl_pendek" placeholder="pendek">
-																<input type="text" class="form-control" id="xxxl_panjang" placeholder="panjang"><br>
-															</div>
-														</div>
-													</div>
-
-													<div class="col-md-3">
-														<div class="form-group row">
-															<label for="input" class="col-sm-3 col-form-label">S</label>
-															<div class="col-sm-7">
-																<input type="text" class="form-control" id="s_pendek" placeholder="pendek">
-																<input type="text" class="form-control" id="s_panjang" placeholder="panjang"><br>
-															</div>
-
-															<label for="input" class="col-sm-3 col-form-label">XL</label>
-															<div class="col-sm-7">
-																<input type="text" class="form-control" id="xl_pendek" placeholder="pendek">
-																<input type="text" class="form-control" id="xl_panjang" placeholder="panjang"><br>
-															</div>
-
-															<label for="input" class="col-sm-3 col-form-label">Jumbo</label>
-															<div class="col-sm-7">
-																<input type="text" class="form-control" id="jumbo_pendek" placeholder="pendek">
-																<input type="text" class="form-control" id="jumbo_panjang" placeholder="panjang"><br>
-															</div>
-														</div>
-													</div>
-
-													<div class="col-md-3">
-														<div class="form-group row">
-															<label for="input" class="col-sm-3 col-form-label">M</label>
-															<div class="col-sm-7">
-																<input type="text" class="form-control" id="m_pendek" placeholder="pendek">
-																<input type="text" class="form-control" id="m_panjang" placeholder="panjang"><br>
-															</div>
-
-															<label for="input" class="col-sm-3 col-form-label">XXL</label>
-															<div class="col-sm-7">
-																<input type="text" class="form-control" id="xxl_pendek" placeholder="pendek">
-																<input type="text" class="form-control" id="xxl_panjang" placeholder="panjang"><br>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-											<div class="form-group">
-												<label for="kode_order">Keterangan</label>
-												<textarea type="text" class="form-control" id="keterangan" name="keterangan"></textarea>
 											</div>
 											<div class="form-group">
 												<label>Status</label>

@@ -20,7 +20,6 @@ class Kain extends CI_Controller
 	{
 
 		$this->form_validation->set_rules('nama_kain', 'Nama_Kain', 'required');
-		$this->form_validation->set_rules('harga', 'Harga', 'required');
 
 		if ($this->form_validation->run() ==  FALSE) {
 			$this->index();
@@ -43,7 +42,6 @@ class Kain extends CI_Controller
 	public function update_kain()
 	{
 		$this->form_validation->set_rules('nama_kain', 'Nama_Kain', 'required');
-		$this->form_validation->set_rules('harga', 'Harga', 'required');
 		if ($this->form_validation->run() ==  FALSE) {
 			redirect($_SERVER['HTTP_REFERER']);
 		} else {

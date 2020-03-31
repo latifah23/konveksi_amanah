@@ -47,49 +47,52 @@
 
 <body class="hold-transition skin-blue layout-top-nav">
 
-	<header class="main-header">
-		<nav class="navbar navbar-static-top">
-			<div class="container">
-				<div class="navbar-header">
-					<div class="navbar-brand"><b>AMANAH</b> Collection</a>
-					<!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-						<i class="fa fa-bars"></i>
-					</button> -->
-				</div>
-
-
-				<div class="collapse navbar-collapse pull-left" id="navbar-collapse">
-					<ul class="nav navbar-nav">
-						<li class=""><a href="<?= base_url('home') ?>">Home</a></li>
-						<li class=""><a href="<?= base_url('pesanan/tambah_pesanan') ?>">Pesan Baru</a></li>
-						<li class=""><a href="<?= base_url('pesanan') ?>">Data Pesan<span class="sr-only">(current)</span></a></li>
-						<li class=""><a href="<?= base_url('customer/index') ?>">Customer <span class="sr-only">(current)</span></a></li>
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown">Master <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="<?= base_url('produk') ?>">Produk</a></li>
-								<li><a href="<?= base_url('kain') ?>">Kain</a></li>
-								<li><a href="<?= base_url('sablon') ?>">Sablon</a></li>
-							</ul>
-						</li>
-						<li class=""><a href="<?= base_url('riwayat') ?>">Riwayat</a></li>
-					</ul>
-				</div>
-				<div class="navbar-custom-menu">
-					<ul class="nav navbar-nav">
-
-						<li class="dropdown user user-menu">
-							<a href="<?= base_url('login/logout') ?>">
-							<i class="fa fa-fw fa-sign-out"></i> 
-								<span class="hidden-xs">LOGOUT</span>
-							</a>
-						</li>
-					</ul>
-				</div>
-			</div>
-		</nav>
-	</header>
 	<!-- Modal tambah customer-->
 	<!-- <?php
 	include APPPATH . 'views/customer/_form_add_customer.php';
 	?> -->
+
+<div class="account-pages"></div>
+<div class="clearfix"></div>
+<div class="wrapper-page">
+	<div class=" card-box">
+		<div class="panel-heading">
+			<h3 class="text-center"> Masuk Untuk Memesan<strong class="text-custom"><br/>Amanah Collection</strong> </h3>
+		</div>
+
+		<!--Koreksi email pass-->
+		<?= $this->session->flashdata('msg') ?>
+
+		<div class="login-box">
+            	<div class="login-box-body">
+				<form class="form-horizontal" action="<?php echo site_url('login/login'); ?>" method="post">
+
+					<div class="form-group ">
+						<div class="col-xs-12">
+							<input class="form-control" type="text" name="username" required="" placeholder="Username">
+							<small class="form-text text-danger"><?= form_error("username"); ?></small>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-xs-12">
+							<input class="form-control" type="password" name="password" required="" placeholder="Password">
+							<small class="form-text text-danger"><?= form_error("password"); ?></small>
+						</div>
+					</div>
+
+					<div class="form-group text-center m-t-40">
+						<div class="col-xs-12">
+							<button class="btn btn-primary" type="submit" >Log In</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-12 text-center">
+			<p>Don't have an account? <a href="<?php echo site_url('register'); ?>" class="text-primary m-l-5"><b>Sign Up</b></a></p>
+		</div>
+	</div>
+</div>

@@ -9,10 +9,85 @@ class Model_pemesanan extends CI_Model
 		return $this->db->get($this->_table)->result_array();
 	}
 
+	public function get_all_proses(){
+		$sql = "SELECT pesan.*,produk.nama_produk as produk,customer.nama, kain.nama_kain as kain, sablon.nama_sablon as sablon FROM pesan 
+		JOIN produk ON produk.id_produk = pesan.id_produk
+		JOIN kain ON kain.id_kain = pesan.id_kain
+		JOIN sablon ON sablon.id_sablon = pesan.id_sablon
+		JOIN customer ON customer.id_customer = pesan.id_customer
+		WHERE pesan.status = 'proses'";
+
+		//execute query
+		$query = $this->db->query($sql);
+		if ($query->num_rows() > 0){
+			$result = $query->result_array();
+			$query->free_result();
+			return $result;
+		}else{
+			return array();
+		}
+	}
+
+	public function get_all_proses_search($args = array()){
+		$params = array();
+		$sql = "SELECT pesan.*,produk.nama_produk as produk,customer.nama, kain.nama_kain as kain, sablon.nama_sablon as sablon FROM pesan 
+		JOIN produk ON produk.id_produk = pesan.id_produk
+		JOIN kain ON kain.id_kain = pesan.id_kain
+		JOIN sablon ON sablon.id_sablon = pesan.id_sablon
+		JOIN customer ON customer.id_customer = pesan.id_customer
+		WHERE pesan.status = 'proses'";
+		if (!empty($args['tahun'])) {
+		    $sql .= " AND YEAR(pesan.tanggal_pesan) = ?";
+		    array_push($params, $args['tahun']);
+		    }
+		    if (!empty($args['bulan'])) {
+			$sql .= " AND MONTH(pesan.tanggal_pesan) = ?";
+			array_push($params, $args['bulan']);
+			}
+		//execute query
+		$query = $this->db->query($sql,$params);
+		
+		if ($query->num_rows() > 0) {
+		$result = $query->result_array();
+		$query->free_result();
+		return $result;
+		}else{
+		return array();
+		}
+	 }
+
 	public function riwayat()
 	{
-		
+		$sql = "SELECT pesan.*,produk.nama_produk as produk,customer.nama, kain.nama_kain as kain, sablon.nama_sablon as sablon FROM pesan 
+		JOIN produk ON produk.id_produk = pesan.id_produk
+		JOIN kain ON kain.id_kain = pesan.id_kain
+		JOIN sablon ON sablon.id_sablon = pesan.id_sablon
+		JOIN customer ON customer.id_customer = pesan.id_customer
+		WHERE pesan.status = 'selesai'";
+		//execute query
+		$query = $this->db->query($sql);
+		if ($query->num_rows() > 0){
+			$result = $query->result_array();
+			$query->free_result();
+			return $result;
+		}else{
+			return array();
+		}
 	}
+
+	public function get_detail_by_id($kode){
+		$sql = "SELECT * FROM detail_pesan WHERE id_pesan = ?";
+		//execute query
+		$query = $this->db->query($sql,$kode);
+		if ($query->num_rows() > 0){
+			$result = $query->result_array();
+			$query->free_result();
+			return $result;
+		}else{
+			return array();
+		}
+	}
+
 	public function cekkodeorder()
 	{
 		//keterangan 
@@ -39,12 +114,17 @@ class Model_pemesanan extends CI_Model
 	{
 		$post = $this->input->post();
 		$data = array(
-			"id_pesan" 			=> $post["id_pesan"],
 			"id_customer" 			=> $post["id_customer"],
 			"kode_order" 			=> $post["kode_order"],
 			"tanggal_pesan" 		=> $post["tanggal_pesan"],
 			"tanggal_ambil" 		=> $post["tanggal_ambil"],
 			"id_produk" 			=> $post["id_produk"],
+			"id_kain" 			=> $post["id_kain"],
+			"warna" 				=> $post["warna"],
+			"id_sablon" 			=> $post["id_sablon"],
+			"jumlah" 				=> $post["jumlah"],
+			"id_ukuran" 			=> $post["id_ukuran"],
+			"keterangan" 			=> $post["keterangan"],
 			
 		);
 		$this->db->insert('pesan', $data);
@@ -73,42 +153,77 @@ class Model_pemesanan extends CI_Model
 		return $insert_id = $this->db->insert_id();
 	}
 
+	public function insert($table,$params)
+    {
+        
+        
+        return $this->db->insert($table,$params);
+    }
 
-	public function hapus_pesan($id)
+    public function update($table,$params,$where)
+    {
+        $this->db->set($params);
+        $this->db->where($where);
+        return $this->db->update($table);
+    }
+
+    public function hapus_detail_pesan($id_pesan)
 	{
 		//produces:
 		//WHERE id_nomor008 = $id
-		$this->db->where('id', $id);
+		$this->db->where('id_pesan', $id_pesan);
+		//DELETE FORM mytable
+		$this->db->delete("detail_pesan");
+	}
+
+	public function hapus_pesan($id_pesan)
+	{
+		//produces:
+		//WHERE id_nomor008 = $id
+		$this->db->where('id_pesan', $id_pesan);
 		//DELETE FORM mytable
 		$this->db->delete("pesan");
 	}
 
-	public function getByid($id)
+	public function getByid($id_pesan)
 	{
-		return $this->db->get_where('pesan', ['id' => $id])->row_array();
+		return $this->db->get_where('pesan', ['id_pesan' => $id_pesan])->row_array();
 	}
 	public function getBykode($kode)
 	{
-		return $this->db->get_where('pesan', ['kode_order' => $kode])->row_array();
+		return $this->db->get_where('pesan', ['id_pesan' => $kode])->row_array();
 	}
 
 	public function update_pesan()
 	{
 		$post = $this->input->post();
 		$data = array(
-			"id_pegawai" 			=> $post["id_pegawai"],
 			"id_customer" 			=> $post["id_customer"],
-			"durasi_pesan" 		=> $post["durasi_pesan"],
 			"kode_order" 			=> $post["kode_order"],
-			// "status" 				=> $post["status"],
-			// "produk_id" 			=> $post["produk_id"],
-			"jenis_kain" 			=> $post["jenis_kain"],
-			"warna" 				=> $post["warna"],
-			"jumlah_pesan" 		=> $post["jumlah_pesan"],
-			// "jenis_sablon"			=> $post["jenis_sablon"],
+			"tanggal_pesan" 		=> $post["tanggal_pesan"],
+			"tanggal_ambil" 		=> $post["tanggal_ambil"],
+			"id_produk" 			=> $post["id_produk"],
 			"keterangan" 			=> $post["keterangan"]
 		);
 		$this->db->where('id', $this->input->post('id'));
 		$this->db->update('pesan', $data);
+	}
+
+	public function getpesan_by_id($id_pesan){
+		$sql = "SELECT pesan.*,produk.nama_produk as produk, kain.nama_kain as kain, sablon.nama_sablon as sablon, customer.nama as nama_customer FROM pesan 
+		JOIN produk ON produk.id_produk = pesan.id_produk
+		JOIN kain ON kain.id_kain = pesan.id_kain
+		JOIN sablon ON sablon.id_sablon = pesan.id_sablon 
+		JOIN customer ON customer.id_customer = pesan.id_customer
+		WHERE id_pesan = ?";
+		//execute query
+		$query = $this->db->query($sql,$id_pesan);
+		if ($query->num_rows() > 0){
+			$result = $query->row_array();
+			$query->free_result();
+			return $result;
+		}else{
+			return array();
+		}
 	}
 }

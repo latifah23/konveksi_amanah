@@ -21,10 +21,6 @@
 							<label for="nama">Nama</label>
 							<input type="text" class="form-control" id="nama_kain" name="nama_kain" value="<?= $kain['nama_kain'] ?>">
 						</div>
-						<div class="form-group">
-							<label for="harga">Harga Kain</label>
-							<input type="text" class="form-control" id="harga" name="harga" value="<?= $kain['harga'] ?>">
-						</div>
 					</div>
 					<div class="modal-footer">
 						<a class="btn btn-info " href="<?= base_url('kain') ?>">Kembali</a>

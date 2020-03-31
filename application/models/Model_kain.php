@@ -14,7 +14,6 @@ class Model_kain extends CI_Model
 		$post = $this->input->post();
 		$data = array(
 			"nama_kain"	=> $post['nama_kain'],
-			"harga"		=> $post['harga'],
 		);
 
 		$this->db->insert('kain', $data);
@@ -41,7 +40,6 @@ class Model_kain extends CI_Model
 		$post = $this->input->post();
 		$data = array(
 			"nama_kain"	=> $post['nama_kain'],
-			"harga"		=> $post['harga'],
 		);
 		$this->db->where('id_kain', $this->input->post('id_kain'));
 		$this->db->update('kain', $data);

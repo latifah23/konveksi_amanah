@@ -14,44 +14,46 @@
 			</section>
 
 			<!-- Main content -->
-			<section class="content">
+			<section class="content" layout="center`">
 				<!-- Small boxes (Stat box) -->
 				<div class="row">
-					<div class="col-lg-3 col-xs-6">
+					<div class="col-lg-4 col-xs-6">
 						<!-- small box -->
 						<div class="small-box bg-aqua">
 							<div class="inner">
-								<h3>150</h3>
+								<h3><?=$total_proses?></h3>
 
-								<p><b>Polo Shirt</b></p>
+								<p><b>Proses</b></p>
 							</div>
 							<div class="icon">
 								<i class="ion ion-bag"></i>
 							</div>
-							<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+							<a href="pesanan/index" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
 					<!-- ./col -->
-					<div class="col-lg-3 col-xs-6">
+					<div class="col-lg-4 col-xs-6">
 						<!-- small box -->
 						<div class="small-box bg-green">
 							<div class="inner">
-								<h3>53<sup style="font-size: 20px">%</sup></h3>
+								<h3><?=$total_selesai?></h3>
 
-								<p><b>PDL</b></p>
+								<p><b>Selesai</b></p>
 							</div>
 							<div class="icon">
 								<i class="ion ion-stats-bars"></i>
 							</div>
-							<a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+							<a href="pesanan/riwayat" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
 						</div>
 					</div>
+				</div>
+				<div class="row">
 					<!-- ./col -->
 					<div class="col-lg-3 col-xs-6">
 						<!-- small box -->
 						<div class="small-box bg-yellow">
 							<div class="inner">
-								<h3>44</h3>
+							<h3><?=$total_tshirt?></h3>
 
 								<p><b>T-shirt</b></p>
 							</div>
@@ -66,9 +68,9 @@
 						<!-- small box -->
 						<div class="small-box bg-red">
 							<div class="inner">
-								<h3>65</h3>
+							<h3><?=$total_celana?></h3>
 
-								<p><b>Celana</b></p>
+								<p><b>Celana Training</b></p>
 							</div>
 							<div class="icon">
 								<i class="ion ion-pie-graph"></i>
@@ -82,7 +84,7 @@
 						<!-- small box -->
 						<div class="small-box bg-purple">
 							<div class="inner">
-								<h3>65</h3>
+							<h3><?=$total_jaket?></h3>
 
 								<p><b>Jaket</b></p>
 							</div>
@@ -99,7 +101,7 @@
 						<!-- small box -->
 						<div class="small-box bg-orange">
 							<div class="inner">
-								<h3>65</h3>
+							<h3><?=$total_topi?></h3>
 
 								<p><b>Topi</b></p>
 							</div>

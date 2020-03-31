@@ -14,7 +14,6 @@ class Model_sablon extends CI_Model
 		$post = $this->input->post();
 		$data = array(
 			"nama_sablon"  => $post['nama_sablon'],
-			"harga"  => $post['harga'],
 		);
 
 		$this->db->insert('sablon', $data);
@@ -41,7 +40,6 @@ class Model_sablon extends CI_Model
 		$post = $this->input->post();
 		$data = array(
 			"nama_sablon"  => $post['nama_sablon'],
-			"harga"  => $post['harga'],
 		);
 		$this->db->where('id_sablon', $this->input->post('id_sablon'));
 		$this->db->update('sablon', $data);

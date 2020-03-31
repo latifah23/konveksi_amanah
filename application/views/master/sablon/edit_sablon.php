@@ -21,10 +21,6 @@
 							<label for="nama">Nama</label>
 							<input type="text" class="form-control" id="nama_sablon" name="nama_sablon" value="<?= $sablon['nama_sablon'] ?>">
 						</div>
-						<div class="form-group">
-							<label for="harga">Harga</label>
-							<input type="text" class="form-control" id="harga" name="harga" value="<?= $sablon['harga'] ?>">
-						</div>
 					</div>
 					<div class="modal-footer">
 						<a class="btn btn-info " href="<?= base_url('sablon') ?>">Kembali</a>

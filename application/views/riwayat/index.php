@@ -16,13 +16,13 @@
 						<thead>
 							<tr>
 								<th>No</th>
-								<th>Kode Order</th>
-								<th>customer</th>
+								<th>Id Pesanan</th>
+								<th>Customer</th>
+								<th>Tanggal Pesan</th>
+								<th>Tanggal Ambil</th>
 								<th>Produk</th>
-								<th>Pegawai</th>
-								<th>Durasi Pemesanan</th>
 								<th>Status</th>
-
+								<th>Tindakan</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -30,18 +30,15 @@
 							<?php foreach ($pemesanan as $key => $value) : ?>
 								<tr>
 									<td><?= $i++ ?></td>
-									<td><?= $value['kode_order'] ?></td>
-									<td><?= $value['nama_customer'] ?></td>
-									<td><?= $value['nama_produk'] ?></td>
-									<td><?= $value['nama_pegawai'] ?></td>
-									<td><?= $value['durasi_pemesanan'] ?></td>
+									<td><?= $value['id_pesan'] ?></td>
+									<td><?= $value['nama'] ?></td>
+									<td><?= $value['tanggal_pesan'] ?></td>
+									<td><?= $value['tanggal_ambil'] ?></td>
+									<td><?= $value['produk'] ?></td>
+									<td><?= $value['status'] ?></td>
 									<td>
-										<?php if ($value['status'] == 1) : ?>
-											Selsai
-										<?php else : ?>
-											Proses
-										<?php endif; ?>
-
+										<!-- Button trigger modal -->
+										<a href="<?= base_url('/riwayat/detail_riwayat/') . $value['id_pesan'] ?>" class="btn btn-warning btn-xs"><i class="fa fa-fw fa-search"></i></a>
 									</td>
 								</tr>
 							<?php endforeach; ?>

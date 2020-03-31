@@ -30,7 +30,6 @@
 							<tr>
 								<th width="5%">No.</th>
 								<th style="min-width: 140px; width: 600px;">Nama Sablon</th>
-								<th style="min-width: 20px; width: 153px;">Harga Sablon</th>
 								<th style="min-width: 10px; width: 227px;">Tindakan</th>
 							</tr>
 						</thead>
@@ -40,7 +39,6 @@
 								<tr>
 									<td><?= $key+1 ?></td>
 									<td><?= $value['nama_sablon'] ?></td>
-									<td><?= $value['harga'] ?></td>
 									<td class="text-center">
 								
 										<a href="<?php echo base_url("sablon/edit_sablon/" . $value['id_sablon']) ?>" class="btn btn-flat btn-warning btn-xs"><i class="fa fa-edit"></i></a>
