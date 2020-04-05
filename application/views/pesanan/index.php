@@ -14,11 +14,10 @@
 				<label>Tahun</label>
 				<input type="text" class="form-control" id="input" placeholder="Tahun" name="tahun" value="<?php if(!empty($search['tahun'])){echo $search['tahun'];} ?>" >
 			</div>
-
 			<div id="bulan" class="col-md-4" style="display: block;" >
 					<label>Bulan : </label>
 					<select id="bulan" name="bulan" class="form-control" >
-								<option value="01" <?php if ($search['bulan'] =='01'){echo 'selected';}?>> Januari</option>
+								<option value="01" <?php if ($search['bulan'] =='1'){echo 'selected';}?>> Januari</option>
 								<option value="02"<?php if ($search['bulan'] =='02'){echo 'selected';}?>> Februari</option>
 								<option value="03" <?php if ($search['bulan'] =='03'){echo 'selected';}?>> Maret</option>
 								<option value="04"<?php if ($search['bulan'] =='04'){echo 'selected';}?>> April</option>
@@ -44,7 +43,7 @@
 				<label>&nbsp;</label>
 					<a href="<?= base_url('/pesanan/tambah_pesanan') ?>" type="button" class="btn btn-block btn-primary" style="width:auto; float:right;">
 						<i class="fa fa-plus"></i> 
-						Tambah Data
+						Tambah Pesan
 					</a>
 			</div>
     		</div>
@@ -86,7 +85,6 @@
 										<a href="<?= base_url('/pesanan/hapus_pesanan/') . $value['id_pesan']?>" class="btn btn-danger btn-xs" onclick="return confirm('yakin?')"><i class="fa fa-fw fa-trash-o	"></i></a>
 
 									</td>
-
 								</tr>
 							<?php endforeach; ?>
 						</tbody>

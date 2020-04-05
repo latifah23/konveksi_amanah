@@ -15,7 +15,7 @@ class Model_login extends CI_Model
 		$query = $this->db->query($sql,$params);
 		if ($query->num_rows() > 0){
 			$result = $query->row_array();
-			$query->free_result();
+			$query->free_result(); 
 			return $result;
 		}else{
 			return array();
@@ -69,6 +69,7 @@ class Model_login extends CI_Model
 			// 'role_id'	      => 2,
 			// 'is_active'     => 1,
 		);
+		echo"<pre>";print_r($data);die;
 		// $this->db->set('user_uuid', 'UUID()', FALSE);
 		$this->db->insert('customer', $data);
 	}

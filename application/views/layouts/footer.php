@@ -31,6 +31,10 @@
 <!-- AdminLTE for demo purposes -->
 <script src="<?= base_url('assets/') ?>dist/js/demo.js"></script>
 <script src="<?= base_url('assets/') ?>dist/js/script.js"></script>
+<!-- ChartJS -->
+<script src="<?= base_url('assets/') ?>plugins/chart.js/Chart.min.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="<?= base_url('assets/') ?>plugins/jquery-knob/jquery.knob.min.js"></script>
 <!--Tambah Date Picker!-->
 <script>
 	//Date picker

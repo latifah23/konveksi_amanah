@@ -187,8 +187,12 @@
 				</div>
 				<div class="box-footer clearfix">
 					<div class="col-md-12"align="right">
-						<button type="submit" class="btn btn-primary">SAVE</button>
+					
+						<!-- <button type="submit" class="btn btn-primary">SAVE</button> -->
 						<button type="button" class="btn btn-danger">CANCEL</button>
+						<a href="<?= base_url('/riwayat/detail_riwayat/') ?>" type="button" class="btn btn-block btn-primary" style="width:auto; float:right;">
+						SAVE
+					</a>
 					</div>
 				</div>
 			</section>

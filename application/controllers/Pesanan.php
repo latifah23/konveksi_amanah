@@ -21,12 +21,12 @@ class Pesanan extends CI_Controller
 		// print_r($search);die;
 		if(!empty($search)){
 			$data['pemesanan'] = $this->model_pemesanan->get_all_proses_search($search);
-			$data['search'] = $search;
+			
 
 		}else{
 			$data['pemesanan'] = $this->model_pemesanan->get_all_proses();
 		}
-
+		$data['search'] = $search;
 		// echo"<pre>";print_r($data);die;
 		$this->load->view('layouts/header');
 		$this->load->view('pesanan/index', $data);
@@ -295,7 +295,7 @@ class Pesanan extends CI_Controller
 	public function action_search() {
 		// page rule read
 $tes = $this->input->post('search', true);
-// print_r($tes);die();
+		// print_r($tes);die();
 		// $this->_set_page_rule("R");
 		
 	if ($this->input->post('search', true) == "tampilkan") {

@@ -8,7 +8,7 @@ class Register extends CI_Controller
 		$this->load->library('form_validation');
 	}
 
-	function index()
+	function index() 
 	{
           $this->form_validation->set_rules('nama', 'Nama', 'required');
 		$this->form_validation->set_rules('username', 'Username', 'required');
@@ -26,7 +26,24 @@ class Register extends CI_Controller
 			$this->load->view('register/register');
 			$this->load->view('layouts/footer');
 		} else {
-			$this->model_login->register();
+			$data = array(
+				"nama" 	      => $post['nama'],
+				'username' 	 => $post["username"],
+				'password'	 => md5($post["password"]),
+				'jekel'		=>$post	['jekel'],
+				'email'		=>$post	['email'],
+				'notelp'		=>$post	['notelp'],
+				'nowa'		=>$post	['nowa'],
+				'provinsi'		=>$post	['provinsi'],
+				'kota'		=>$post	['kota'],
+				'kecamatan'		=>$post	['kecamatan'],
+				'kodepos'		=>$post	['kodepos'],
+				'alamat'		=>$post	['alamat'],
+				// 'role_id'	      => 2,
+				// 'is_active'     => 1,
+			);
+			// echo"<pre>";print_r($data);die;
+			$this->model_login->register($data);
 			$this->session->set_flashdata('flash', 'Ditambahkan');
 			redirect('login');
 		}

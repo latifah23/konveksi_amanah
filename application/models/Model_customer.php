@@ -15,7 +15,7 @@ class Model_customer extends CI_Model
 		$data = array(
 			"nama"         => $post['nama'],
 			"username"     => $post['username'],
-			"password"     => $post['password'],
+			"password"     => md5($post["password"]),
 			"jekel"    	=> $post['jekel'],
 			'email'		=> $post["email"],
 			'notelp'		=> $post["notelp"],
@@ -53,7 +53,7 @@ class Model_customer extends CI_Model
 		$data = array(
 			"nama"         => $post['nama'],
 			"username"     => $post['username'],
-			"password"     => $post['password'],
+			'password'	 => md5($post["password"]),
 			"jekel"    	=> $post['jekel'],
 			'email'		=> $post["email"],
 			'notelp'		=> $post["notelp"],

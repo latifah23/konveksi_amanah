@@ -75,13 +75,10 @@
 								<label for="nama_sablon">Nama sablon</label>
 								<input type="text" class="form-control" id="nama_sablon" name="nama_sablon">
 							</div>
-							<div class="form-group">
-								<label for="harga_sablon">Harga sablon</label>
-								<input type="text" class="form-control" id="harga" name="harga">
-							</div>
 							<div class="modal-footer">
 								<button type="submit" class="btn btn-default waves-effect waves-light">Save</button>
-								<button type="button" class="btn btn-danger waves-effect waves-light m-l-10">Cancel</button>
+								<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
 							</div>
 						</form>
 					</div>

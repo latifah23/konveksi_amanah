@@ -1,4 +1,12 @@
 <?php
+
+// session_start();
+
+// if(!isset($_SESSION["login"]) ){
+// 	header("Location: login.php");
+// 	exit;
+// }
+
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Home extends CI_Controller

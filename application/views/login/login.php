@@ -72,7 +72,7 @@
 							<input class="form-control" type="text" name="username" required="" placeholder="Username">
 							<small class="form-text text-danger"><?= form_error("username"); ?></small>
 						</div>
-					</div>
+					</div> 
 
 					<div class="form-group">
 						<div class="col-xs-12">
