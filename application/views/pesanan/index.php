@@ -8,46 +8,72 @@
 			<br>
 			<br>
 		</section>
-	<form role="form" action="<?= base_url('pesanan/action_search') ?>" method="post" enctype="multipart/form-data">
-		<div class="row">
-			<div class="col-md-4">
-				<label>Tahun</label>
-				<input type="text" class="form-control" id="input" placeholder="Tahun" name="tahun" value="<?php if(!empty($search['tahun'])){echo $search['tahun'];} ?>" >
-			</div>
-			<div id="bulan" class="col-md-4" style="display: block;" >
+		<form role="form" action="<?= base_url('pesanan/action_search') ?>" method="post" enctype="multipart/form-data">
+			<div class="row">
+				<div class="col-md-4">
+					<label>Tahun</label>
+					<input type="text" class="form-control" id="input" placeholder="Tahun" name="tahun" value="<?php if (!empty($search['tahun'])) {
+																													echo $search['tahun'];
+																												} ?>">
+				</div>
+				<div id="bulan" class="col-md-4" style="display: block;">
 					<label>Bulan : </label>
-					<select id="bulan" name="bulan" class="form-control" >
-								<option value="01" <?php if ($search['bulan'] =='1'){echo 'selected';}?>> Januari</option>
-								<option value="02"<?php if ($search['bulan'] =='02'){echo 'selected';}?>> Februari</option>
-								<option value="03" <?php if ($search['bulan'] =='03'){echo 'selected';}?>> Maret</option>
-								<option value="04"<?php if ($search['bulan'] =='04'){echo 'selected';}?>> April</option>
-								<option value="05"<?php if ($search['bulan'] =='05'){echo 'selected';}?>> Mei</option>
-								<option value="06"<?php if ($search['bulan'] =='06'){echo 'selected';}?>> Juni</option>
-								<option value="07"<?php if ($search['bulan'] =='07'){echo 'selected';}?>> Juli</option>
-								<option value="08"<?php if ($search['bulan'] =='08'){echo 'selected';}?>> Agustus</option>
-								<option value="09"<?php if ($search['bulan'] =='09'){echo 'selected';}?>> September</option>
-								<option value="010"<?php if ($search['bulan'] =='010'){echo 'selected';}?>> Oktober</option>
-								<option value="011"<?php if ($search['bulan'] =='011'){echo 'selected';}?>> November</option>
-								<option value="012"<?php if ($search['bulan'] =='012'){echo 'selected';}?>> Desember</option>
+					<select id="bulan" name="bulan" class="form-control">
+						<option value="01" <?php if ($search['bulan'] == '1') {
+												echo 'selected';
+											} ?>> Januari</option>
+						<option value="02" <?php if ($search['bulan'] == '02') {
+												echo 'selected';
+											} ?>> Februari</option>
+						<option value="03" <?php if ($search['bulan'] == '03') {
+												echo 'selected';
+											} ?>> Maret</option>
+						<option value="04" <?php if ($search['bulan'] == '04') {
+												echo 'selected';
+											} ?>> April</option>
+						<option value="05" <?php if ($search['bulan'] == '05') {
+												echo 'selected';
+											} ?>> Mei</option>
+						<option value="06" <?php if ($search['bulan'] == '06') {
+												echo 'selected';
+											} ?>> Juni</option>
+						<option value="07" <?php if ($search['bulan'] == '07') {
+												echo 'selected';
+											} ?>> Juli</option>
+						<option value="08" <?php if ($search['bulan'] == '08') {
+												echo 'selected';
+											} ?>> Agustus</option>
+						<option value="09" <?php if ($search['bulan'] == '09') {
+												echo 'selected';
+											} ?>> September</option>
+						<option value="010" <?php if ($search['bulan'] == '010') {
+												echo 'selected';
+											} ?>> Oktober</option>
+						<option value="011" <?php if ($search['bulan'] == '011') {
+												echo 'selected';
+											} ?>> November</option>
+						<option value="012" <?php if ($search['bulan'] == '012') {
+												echo 'selected';
+											} ?>> Desember</option>
 					</select>
-			</div>
-			<div class="col-md-2">
-				<label>&nbsp;</label>
+				</div>
+				<div class="col-md-2">
+					<label>&nbsp;</label>
 					<button id="btn-search" name="search" value="tampilkan" type="submit" class="btn btn-info btn-block btn-flat btn-md" style="width:auto; float:right;">
-					
-					<!-- <button id="btn-search" onclick="search_data();" class="btn btn-info btn-block btn-flat btn-md"> -->
-					<i class="fa fa-search"></i>
+
+						<!-- <button id="btn-search" onclick="search_data();" class="btn btn-info btn-block btn-flat btn-md"> -->
+						<i class="fa fa-search"></i>
 					</button>
-			</div>
-			<div class="col-md-2">
-				<label>&nbsp;</label>
+				</div>
+				<div class="col-md-2">
+					<label>&nbsp;</label>
 					<a href="<?= base_url('/pesanan/tambah_pesanan') ?>" type="button" class="btn btn-block btn-primary" style="width:auto; float:right;">
-						<i class="fa fa-plus"></i> 
+						<i class="fa fa-plus"></i>
 						Tambah Pesan
 					</a>
+				</div>
 			</div>
-    		</div>
-	</form>
+		</form>
 		<!-- Main content -->
 		<section class="content">
 			<div class="box box-primary">
@@ -57,20 +83,12 @@
 						<thead>
 							<tr>
 								<th>No</th>
-<<<<<<< HEAD
 								<th>Id Pesanan</th>
 								<th>Customer</th>
 								<th>Tanggal Pesan</th>
 								<th>Tanggal Ambil</th>
 								<th>Produk</th>
 								<th>Status</th>
-=======
-								<th>Kode Order</th>
-								<!-- <th>customer</th> -->
-								<th>Tanggal Pesan</th>
-								<th>Tanggal Pengambilan</th>
-								<!-- <th>Produk</th> -->
->>>>>>> master
 								<th>Tindakan</th>
 							</tr>
 						</thead>
@@ -79,33 +97,19 @@
 							<?php foreach ($pemesanan as $key => $value) : ?>
 								<tr>
 									<td><?= $i++ ?></td>
-<<<<<<< HEAD
 									<td><?= $value['id_pesan'] ?></td>
 									<td><?= $value['nama'] ?></td>
 									<td><?= $value['tanggal_pesan'] ?></td>
 									<td><?= $value['tanggal_ambil'] ?></td>
 									<td><?= $value['produk'] ?></td>
 									<td><?= $value['status'] ?></td>
-=======
-									<td><a href="<?= base_url('/pesanan/tampil_pesanan/') . $value['kode_order'] ?>"><?= $value['kode_order'] ?></a></td>
-									<!-- <td><?= $value['nama_customer'] ?></td> -->
-									<td><?= $value['tanggal_pesan'] ?></td>
-									<td><?= $value['tanggal_ambil'] ?></td>
-									<!-- <td><?= $value[''] ?></td> -->
->>>>>>> master
 									<td>
 										<!-- Button trigger modal -->
 										<a href="<?= base_url('/pesanan/laporan_pdf/') . $value['id_pesan'] ?>" class="btn btn-info btn-xs"><i class="fa fa-fw fa-file-pdf-o"></i></a>
 										<a href="<?= base_url('/pesanan/update_pesanan/') . $value['id_pesan'] ?>" class="btn btn-success btn-xs"><i class="fa fa-fw fa-pencil"></i></a>
 										<a href="<?= base_url('/pesanan/detail_pesan/') . $value['id_pesan'] ?>" class="btn btn-warning btn-xs"><i class="fa fa-fw fa-search"></i></a>
-										<a href="<?= base_url('/pesanan/hapus_pesanan/') . $value['id_pesan']?>" class="btn btn-danger btn-xs" onclick="return confirm('yakin?')"><i class="fa fa-fw fa-trash-o	"></i></a>
-
-<<<<<<< HEAD
-=======
-										<a type="button" data-id="<?= $value['id_pesan'] ?>" class="btn tampilUbah btn-warning btn-xs" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-fw fa-edit"></i></a>
-										<a href="<?= base_url('/pesanan/laporan_pdf/') . $value['kode_order'] ?>" class="btn btn-info btn-xs"><i class="fa fa-fw fa-file-pdf-o"></i></a>
 										<a href="<?= base_url('/pesanan/hapus_pesanan/') . $value['id_pesan'] ?>" class="btn btn-danger btn-xs" onclick="return confirm('yakin?')"><i class="fa fa-fw fa-trash-o	"></i></a>
->>>>>>> master
+
 									</td>
 								</tr>
 							<?php endforeach; ?>

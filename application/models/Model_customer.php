@@ -16,7 +16,6 @@ class Model_customer extends CI_Model
 	{
 		$post = $this->input->post();
 		$data = array(
-<<<<<<< HEAD
 			"nama"         => $post['nama'],
 			"username"     => $post['username'],
 			"password"     => md5($post["password"]),
@@ -29,21 +28,7 @@ class Model_customer extends CI_Model
 			'kecamatan'	=> $post["kecamatan"],
 			'kodepos'		=> $post["kodepos"],
 			'alamat'       => $post["alamat"],
-			
-=======
-			"nama"      => $post['nama'],
-			"username"  => $post['username'],
-			"password"  => $post['password'],
-			"jekel"     => $post['jekel'],
-			'email'     => $post["email"],
-			'notelp'    => $post["notelp"],
-			'nowa'      => $post["nowa"],
-			'provinsi'  => $post["provinsi"],
-			'kota'      => $post["kota"],
-			'kecamatan' => $post["kecamatan"],
-			'kodepos'   => $post["kodepos"],
-			'alamat'    => $post["alamat"],
->>>>>>> master
+
 		);
 		$this->db->insert('customer', $data);
 	}
@@ -69,7 +54,6 @@ class Model_customer extends CI_Model
 
 		$post = $this->input->post();
 		$data = array(
-<<<<<<< HEAD
 			"nama"         => $post['nama'],
 			"username"     => $post['username'],
 			'password'	 => md5($post["password"]),
@@ -82,20 +66,6 @@ class Model_customer extends CI_Model
 			'kecamatan'	=> $post["kecamatan"],
 			'kodepos'		=> $post["kodepos"],
 			'alamat'       => $post["alamat"],
-=======
-			"nama"      => $post['nama'],
-			"username"  => $post['username'],
-			"password"  => $post['password'],
-			"jekel"     => $post['jekel'],
-			'email'     => $post["email"],
-			'notelp'    => $post["notelp"],
-			'nowa'      => $post["nowa"],
-			'provinsi'  => $post["provinsi"],
-			'kota'      => $post["kota"],
-			'kecamatan' => $post["kecamatan"],
-			'kodepos'   => $post["kodepos"],
-			'alamat'    => $post["alamat"],
->>>>>>> master
 		);
 		$this->db->where('id_customer', $this->input->post('id_customer'));
 		$this->db->update('customer', $data);
