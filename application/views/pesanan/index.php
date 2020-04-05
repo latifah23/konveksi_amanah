@@ -57,12 +57,20 @@
 						<thead>
 							<tr>
 								<th>No</th>
+<<<<<<< HEAD
 								<th>Id Pesanan</th>
 								<th>Customer</th>
 								<th>Tanggal Pesan</th>
 								<th>Tanggal Ambil</th>
 								<th>Produk</th>
 								<th>Status</th>
+=======
+								<th>Kode Order</th>
+								<!-- <th>customer</th> -->
+								<th>Tanggal Pesan</th>
+								<th>Tanggal Pengambilan</th>
+								<!-- <th>Produk</th> -->
+>>>>>>> master
 								<th>Tindakan</th>
 							</tr>
 						</thead>
@@ -71,12 +79,20 @@
 							<?php foreach ($pemesanan as $key => $value) : ?>
 								<tr>
 									<td><?= $i++ ?></td>
+<<<<<<< HEAD
 									<td><?= $value['id_pesan'] ?></td>
 									<td><?= $value['nama'] ?></td>
 									<td><?= $value['tanggal_pesan'] ?></td>
 									<td><?= $value['tanggal_ambil'] ?></td>
 									<td><?= $value['produk'] ?></td>
 									<td><?= $value['status'] ?></td>
+=======
+									<td><a href="<?= base_url('/pesanan/tampil_pesanan/') . $value['kode_order'] ?>"><?= $value['kode_order'] ?></a></td>
+									<!-- <td><?= $value['nama_customer'] ?></td> -->
+									<td><?= $value['tanggal_pesan'] ?></td>
+									<td><?= $value['tanggal_ambil'] ?></td>
+									<!-- <td><?= $value[''] ?></td> -->
+>>>>>>> master
 									<td>
 										<!-- Button trigger modal -->
 										<a href="<?= base_url('/pesanan/laporan_pdf/') . $value['id_pesan'] ?>" class="btn btn-info btn-xs"><i class="fa fa-fw fa-file-pdf-o"></i></a>
@@ -84,6 +100,12 @@
 										<a href="<?= base_url('/pesanan/detail_pesan/') . $value['id_pesan'] ?>" class="btn btn-warning btn-xs"><i class="fa fa-fw fa-search"></i></a>
 										<a href="<?= base_url('/pesanan/hapus_pesanan/') . $value['id_pesan']?>" class="btn btn-danger btn-xs" onclick="return confirm('yakin?')"><i class="fa fa-fw fa-trash-o	"></i></a>
 
+<<<<<<< HEAD
+=======
+										<a type="button" data-id="<?= $value['id_pesan'] ?>" class="btn tampilUbah btn-warning btn-xs" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-fw fa-edit"></i></a>
+										<a href="<?= base_url('/pesanan/laporan_pdf/') . $value['kode_order'] ?>" class="btn btn-info btn-xs"><i class="fa fa-fw fa-file-pdf-o"></i></a>
+										<a href="<?= base_url('/pesanan/hapus_pesanan/') . $value['id_pesan'] ?>" class="btn btn-danger btn-xs" onclick="return confirm('yakin?')"><i class="fa fa-fw fa-trash-o	"></i></a>
+>>>>>>> master
 									</td>
 								</tr>
 							<?php endforeach; ?>
@@ -169,7 +191,7 @@
 									</form>
 
 								</div>
-								<!-- /.tab-pane -->																					
+								<!-- /.tab-pane -->
 								<div class="tab-pane" id="tab_2-2">
 									The European languages are members of the same family. Their separate existence is a myth.
 									For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ
