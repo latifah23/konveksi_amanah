@@ -35,6 +35,21 @@
 <script src="<?= base_url('assets/') ?>plugins/chart.js/Chart.min.js"></script>
 <!-- jQuery Knob Chart -->
 <script src="<?= base_url('assets/') ?>plugins/jquery-knob/jquery.knob.min.js"></script>
+
+<script src="<?php echo base_url('assets/plugins/chart/Chart.js') ?>"></script>
+<script src="<?php echo base_url('assets/plugins/chart/raphael-min.js')?>"></script>
+<script src="<?php echo base_url('assets/plugins/chart/morris.min.js')?>"></script>
+
+<script>
+
+Morris.Bar({
+  element: 'graph',
+  data: <?php echo $chart;?>,
+  xkey: 'tanggal_pesan',
+  ykeys: ['jml'],
+  labels: ['Jumlah Pesanan']
+});
+</script>
 <!--Tambah Date Picker!-->
 <script>
 	//Date picker

@@ -23,7 +23,10 @@ class Home extends CI_Controller
 		$data['total_tshirt'] = $this->model_home->get_total_tshirt();
 		$data['total_celana'] = $this->model_home->get_total_celana();
 		$data['total_jaket'] = $this->model_home->get_total_jaket();
-		$data['total_topi'] = $this->model_home->get_total_topi();
+		$data['total_polo'] = $this->model_home->get_total_polo();
+		$bulan = date('m');
+		$data_chart = $this->model_home->get_chart($bulan);
+		$data["chart"] = json_encode($data_chart);
 		// echo "<pre>"; print_r($data['total_proses']);die;
 		$this->load->view('layouts/header');
 		$this->load->view('home', $data);

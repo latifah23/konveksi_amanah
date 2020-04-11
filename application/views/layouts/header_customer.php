@@ -30,7 +30,7 @@
 	<!-- Select2 -->
 	<link rel="stylesheet" href="<?= base_url('assets/') ?>bower_components/select2/dist/css/select2.min.css">
 	<link rel="stylesheet" href="<?= base_url('assets/') ?>dist/css/skins/_all-skins.min.css">
-	<link rel="stylesheet" href="<?php echo base_url('assets/plugins/chart/morris.css')?>">
+
 	<!-- jQuery 3 -->
 	<script src="<?= base_url('assets/') ?>bower_components/jquery/dist/jquery.min.js"></script>
 
@@ -58,23 +58,7 @@
 				</div>
 
 
-				<div class="collapse navbar-collapse pull-left" id="navbar-collapse">
-					<ul class="nav navbar-nav">
-						<li class=""><a href="<?= base_url('home') ?>">Home</a></li>
-						<li class=""><a href="<?= base_url('pesanan/tambah_pesanan') ?>">Pesan Baru</a></li>
-						<li class=""><a href="<?= base_url('pesanan') ?>">Data Pesan<span class="sr-only">(current)</span></a></li>
-						<li class=""><a href="<?= base_url('customer/index') ?>">Customer <span class="sr-only">(current)</span></a></li>
-						<li class="dropdown">
-							<a class="dropdown-toggle" data-toggle="dropdown">Master <span class="caret"></span></a>
-							<ul class="dropdown-menu" role="menu">
-								<li><a href="<?= base_url('produk') ?>">Produk</a></li>
-								<li><a href="<?= base_url('kain') ?>">Kain</a></li>
-								<li><a href="<?= base_url('sablon') ?>">Sablon</a></li>
-							</ul>
-						</li>
-						<li class=""><a href="<?= base_url('riwayat') ?>">Riwayat</a></li>
-					</ul>
-				</div>
+				
 				<div class="navbar-custom-menu">
 					<ul class="nav navbar-nav">
 

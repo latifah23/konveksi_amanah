@@ -38,24 +38,26 @@ class Login extends CI_Controller
 
 			// access login for admin 
 			$data   = $validate;
+			// echo"<pre>";print_r($data);die;
 			$username  = $data['username'];
 			$role   = $data['id_role'];
 			$id 	   = $data['id_customer']; 
 					$sesdata = array(
 						'username'     		=> $username,
 						'password'     		=> $password,
-						'id_role'   			=> $id_role,
-						'id_customer'   		=> $id_customer,
+						'id_role'   			=> $role,
+						'id_customer'   		=> $id,
 						'nama'				=> $data['nama']
 
 					);
+					// echo"<pre>";print_r($sesdata);die;
 					$this->session->set_userdata($sesdata);
 					if ($role == 1) {
 						redirect('home');
 
 						// access login for user
 					} elseif ($role == 2) {
-						redirect('pesanan/tambah_pesanan');
+						redirect('Pesanan_Customer/tambah_pesanan');
 					}
 		} else {
 			$this->session->set_flashdata('msg', '<div class="alert alert-danger " role="alert">

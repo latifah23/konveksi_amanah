@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Pesanan extends CI_Controller
+class Customer_Pesanan extends CI_Controller
 {
 	const SESSION_SEARCH = 'search';
 	public function __construct()
@@ -30,30 +30,16 @@ class Pesanan extends CI_Controller
 	}
 
 	public function tambah_pesanan()
-	{
-		$this->form_validation->set_rules('id_customer', 'Id_customer', 'required');
-		$this->form_validation->set_rules('tanggal_pesan', 'Tanggal_Pesan', 'required');
-		$this->form_validation->set_rules('tanggal_ambil', 'Tanggal_Ambil', 'required');
-		$this->form_validation->set_rules('id_produk', 'Id_produk', 'required');
-		$this->form_validation->set_rules('id_kain', 'Id_Kain', 'required');
-		$this->form_validation->set_rules('warna', 'Warna', 'required');
-		$this->form_validation->set_rules('id_sablon', 'Id_Sablon', 'required');
-		$this->form_validation->set_rules('jumlah', 'Jumlah', 'required');
-		$this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
-
-		if ($this->form_validation->run() == false) {
+	{    echo"hai";die;
+		
 			$data['produk'] = $this->model_produk->getAll();
 			$data['customer'] = $this->model_customer->getAll();
 			$data['kain'] = $this->model_kain->getAll();
 			$data['sablon'] = $this->model_sablon->getAll();
-			$this->load->view('layouts/header');
-			$this->load->view('pesanan/tambah_pesanan', $data);
+			$this->load->view('layouts/header_customer');
+			$this->load->view('customer/pesanan/tambah_pesanan', $data);
 			$this->load->view('layouts/footer');
-		} else {
-			$this->action_tambah_pesanan();
-			$this->session->set_flashdata('flash', 'Ditambahkan');
-			redirect('pesanan');
-		}
+		
 	}
 
 	protected function action_tambah_pesanan()

@@ -27,16 +27,16 @@ class Register extends CI_Controller
 			$this->load->view('layouts/footer');
 		} else {
 			$data = array(
-				"nama" 	      => $post['nama'],
-				'username' 	 => $post["username"],
-				'password'	 => md5($post["password"]),
+				"nama" 	     => $post['nama'],
+				'username' 	=> $post["username"],
+				'password'	=> md5($post["password"]),
 				'jekel'		=>$post	['jekel'],
 				'email'		=>$post	['email'],
 				'notelp'		=>$post	['notelp'],
 				'nowa'		=>$post	['nowa'],
-				'provinsi'		=>$post	['provinsi'],
+				'provinsi'	=>$post	['provinsi'],
 				'kota'		=>$post	['kota'],
-				'kecamatan'		=>$post	['kecamatan'],
+				'kecamatan'	=>$post	['kecamatan'],
 				'kodepos'		=>$post	['kodepos'],
 				'alamat'		=>$post	['alamat'],
 				// 'role_id'	      => 2,

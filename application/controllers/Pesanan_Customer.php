@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Pesanan extends CI_Controller
+class Pesanan_Customer extends CI_Controller
 {
 	const SESSION_SEARCH = 'search';
 	public function __construct()
@@ -30,33 +30,18 @@ class Pesanan extends CI_Controller
 	}
 
 	public function tambah_pesanan()
-	{
-		$this->form_validation->set_rules('id_customer', 'Id_customer', 'required');
-		$this->form_validation->set_rules('tanggal_pesan', 'Tanggal_Pesan', 'required');
-		$this->form_validation->set_rules('tanggal_ambil', 'Tanggal_Ambil', 'required');
-		$this->form_validation->set_rules('id_produk', 'Id_produk', 'required');
-		$this->form_validation->set_rules('id_kain', 'Id_Kain', 'required');
-		$this->form_validation->set_rules('warna', 'Warna', 'required');
-		$this->form_validation->set_rules('id_sablon', 'Id_Sablon', 'required');
-		$this->form_validation->set_rules('jumlah', 'Jumlah', 'required');
-		$this->form_validation->set_rules('keterangan', 'Keterangan', 'required');
-
-		if ($this->form_validation->run() == false) {
+	{   
+		// print_r($this->session->userdata());die;
 			$data['produk'] = $this->model_produk->getAll();
-			$data['customer'] = $this->model_customer->getAll();
 			$data['kain'] = $this->model_kain->getAll();
 			$data['sablon'] = $this->model_sablon->getAll();
-			$this->load->view('layouts/header');
-			$this->load->view('pesanan/tambah_pesanan', $data);
+			$this->load->view('layouts/header_customer');
+			$this->load->view('customer/tambah_pesanan', $data);
 			$this->load->view('layouts/footer');
-		} else {
-			$this->action_tambah_pesanan();
-			$this->session->set_flashdata('flash', 'Ditambahkan');
-			redirect('pesanan');
-		}
+		
 	}
 
-	protected function action_tambah_pesanan()
+	public function action_tambah_pesanan()
 	{
 
 		if (!empty($_FILES['design_baju'])) {
@@ -68,7 +53,6 @@ class Pesanan extends CI_Controller
 			$this->load->library('upload', $config);
 			$this->upload->do_upload('design_baju');
 		}
-
 		$number = mt_rand(100, 999);
 		$prefix = 'PS';
 		$generateId = $prefix . $number . date('Ymd');
@@ -93,7 +77,7 @@ class Pesanan extends CI_Controller
 
 			'keterangan' => $this->input->post('keterangan', true)
 		);
-
+		
 		$this->model_pemesanan->insert('pesan', $params);
 
 		$ukur = $this->input->post('ukuran', true);
@@ -107,9 +91,12 @@ class Pesanan extends CI_Controller
 				'enam'	=> $this->input->post('enam', true)[$i],
 				'tiga'	=> $this->input->post('tiga', true)[$i],
 				'pendek'	=> $this->input->post('pendek', true)[$i],
+				
 			);
 			$this->model_pemesanan->insert('detail_pesan', $params_detail);
 		}
+		
+		redirect('Pesanan_Customer/update_pesanan/'.$generateId);
 	}
 
 
@@ -120,8 +107,9 @@ class Pesanan extends CI_Controller
 		$data['sablon'] = $this->model_sablon->getAll();
 		$data['pemesanan'] = $this->model_pemesanan->getpesan_by_id($id_pesan);
 		$data['detail_pesanan'] = $this->model_pemesanan->get_detail_by_id($id_pesan);
-		$this->load->view('layouts/header');
-		$this->load->view('pesanan/edit_pesan', $data);
+		// echo"<pre>";print_r($data['pemesanan']);die;
+		$this->load->view('layouts/header_customer');
+		$this->load->view('customer/edit_pesan', $data);
 		$this->load->view('layouts/footer');
 	}
 
@@ -139,9 +127,8 @@ class Pesanan extends CI_Controller
 
 
 		if ($this->form_validation->run() == false) {
-			redirect('pesanan/update_pesanan');
+			redirect('Pesanan_Customer/update_pesanan');
 		} else {
-
 			if (!empty($_FILES['design_baju'])) {
 				$config['upload_path']          = './upload/pesanan/';
 				$config['allowed_types']        = 'gif|jpg|png';
@@ -165,12 +152,27 @@ class Pesanan extends CI_Controller
 				);
 				$where = array('id_pesan' => $this->input->post('id_pesan', true));
 				$this->model_pemesanan->update('pesan', $params, $where);
+			}else{
+				$params = array(
+					'id_customer' => $this->input->post('id_customer', true),
+					'status' => "proses",
+					'tanggal_pesan' => $this->input->post('tanggal_pesan', true),
+					'tanggal_ambil' => $this->input->post('tanggal_ambil', true),
+					'id_produk' => $this->input->post('id_produk', true),
+					'id_kain' => $this->input->post('id_kain', true),
+					'warna' => $this->input->post('warna', true),
+					'id_sablon' => $this->input->post('id_sablon', true),
+					'jumlah' => $this->input->post('jumlah', true),
+					'keterangan' => $this->input->post('keterangan', true)
+				);
+				$where = array('id_pesan' => $this->input->post('id_pesan', true));
+				$this->model_pemesanan->update('pesan', $params, $where);
 			}
 
 
 
 			$this->session->set_flashdata('flash', 'Diedit');
-			redirect('pesanan');
+			redirect('login/logout');
 		}
 	}
 
@@ -186,83 +188,11 @@ class Pesanan extends CI_Controller
 			'pendek'	=> $this->input->post('pendek', true)
 		);
 		$where = array('id_detail' => $this->input->post('id_detail', true));
+
 		$this->model_pemesanan->update('detail_pesan', $params_detail, $where);
 
 
 		$this->session->set_flashdata('flash', 'Diedit');
 		redirect('pesanan/update_pesanan/' . $id_pesan);
-	}
-
-	function hapus_pesanan($id)
-	{
-		$this->model_pemesanan->hapus_detail_pesan($id);
-		$this->model_pemesanan->hapus_pesan($id);
-		$this->session->set_flashdata('flash', 'DiHapus');
-		redirect('pesanan');
-	}
-	public function laporan_pdf($kode)
-	{
-		$data['pesanan'] = $this->model_pemesanan->getBykode($kode);
-		$pesanan_id = $data['pesanan']['id_pesan'];
-		$queryGetquestion = "SELECT `pesan` .*,
-			`customer`.`nama` as nama_customer,`customer`.`alamat`as alamat_customer,`customer`.`notelp`as notelp_customer,`customer`.`email` as email_customer,
-			`produk`.`nama_produk`,`kain`.`nama_kain`,`sablon`.`nama_sablon`
-			FROM `pesan`
-			JOIN `customer` ON `pesan`.`id_customer` = `customer`. `id_customer`
-			JOIN `kain` ON `pesan`.`id_kain` = `kain`.`id_kain`
-			JOIN	`produk` ON `pesan`.`id_produk` = `produk`. `id_produk`
-			JOIN `sablon` ON `pesan`.`id_sablon` = `sablon`. `id_sablon`
-			WHERE `pesan`.`id_pesan` = '" . $pesanan_id . "'
-		";
-		$query = $this->db->query($queryGetquestion)->row_array();
-		$detail = $this->model_pemesanan->get_detail_by_id($kode);
-		$data['get_pesanan'] = $query;
-		$data['detail_pesanan'] = $detail;
-		$this->load->library('pdf');
-		$this->pdf->setPaper('A4', 'potrait');
-		$this->pdf->filename = "laporan-petanikode.pdf";
-		$this->pdf->load_view('pesanan/laporan_pdf', $data);
-	}
-	public function detail_pesan($id_pesan)
-	{
-		$data['pesan'] = $this->model_pemesanan->getpesan_by_id($id_pesan);
-		$data['detail_pesanan'] = $this->model_pemesanan->get_detail_by_id($id_pesan);
-
-
-		$this->load->view('layouts/header');
-		$this->load->view('pesanan/detail_pesan', $data);
-		$this->load->view('layouts/footer');
-	}
-	public function selesai($id_pesan)
-	{
-		$params = array(
-			'status'	=> "selesai"
-		);
-
-		$where = array(
-			'id_pesan'	=> $id_pesan
-		);
-		$this->model_pemesanan->update('pesan', $params, $where);
-		redirect('pesanan');
-	}
-
-	public function action_search()
-	{
-		$tes = $this->input->post('search', true);
-
-
-		if ($this->input->post('search', true) == "tampilkan") {
-
-			$params = array(
-				'bulan' => $this->input->post('bulan', true),
-				'tahun' => $this->input->post('tahun', true),
-			);
-			$this->session->set_userdata(self::SESSION_SEARCH, $params);
-		} else {
-			echo "gagal";
-			die();
-			$this->session->unset_userdata(self::SESSION_SEARCH);
-		}
-		redirect("pesanan/index");
 	}
 }
